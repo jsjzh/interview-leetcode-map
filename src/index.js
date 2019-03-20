@@ -11,7 +11,7 @@ app.innerHTML = require('./index.html')
 // 开始写项目代码
 
 import 'type/interview-code'
-import 'type/leetcode'
+// import 'type/leetcode'
 
 if (module.hot) {
   console.log('------------------------ 天了噜 (╯‵□′)╯︵ 更新了 ------------------------')

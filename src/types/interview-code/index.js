@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-20 21:19:51
- * @LastEditTime: 2019-03-20 22:35:57
+ * @LastEditTime: 2019-03-20 23:23:01
  * @Description: 这里会收集平时看到的面试题，并附上自己的解答，基本上都会补充上来源和说明还有示例
  */
 
@@ -68,3 +68,30 @@ function composeFunctions(...args) {
 // const multiply = (x, y) => x * y
 // const multiplyAdd = composeFunctions(multiply, add)
 // console.log(multiplyAdd(3, 4))
+
+/**
+ * 来源：微信群
+ *
+ * 需求：
+ *  把 arrB 里的不同项添加至 arrA 里
+ *  要求 arrA 里不出现重复项
+ *  求个最优解
+ *
+ * @param {Object[]} arrA
+ * @param {Object[]} arrB
+ */
+function demo(arrA, arrB) {
+  let arr = arrA.concat(arrB)
+  for (let i = 0; i < arr.length; i++) {
+    const item = arr[i]
+    for (let j = i; j < arr.length; j++) {
+      const element = arr[j]
+      if (item.id === element.id) arr.splice(i, 1)
+    }
+  }
+  return arr
+}
+let arrA = [{ id: 1 }, { id: 2 }, { id: 3 }]
+let arrB = [{ id: 3 }, { id: 4 }, { id: 5 }]
+
+console.log(demo(arrA, arrB))
