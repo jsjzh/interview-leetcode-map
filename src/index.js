@@ -5,6 +5,8 @@ import 'static/css/reset.css'
 import 'static/css/github-markdown.css'
 import './index.css'
 
+const app = document.getElementById('app')
+app.innerHTML = require('./index.html')
 // -------------
 // 开始写项目代码
 
