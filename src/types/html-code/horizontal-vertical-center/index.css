@@ -1,0 +1,48 @@
+.center-container {
+  width: 100%;
+  height: 100%;
+}
+
+.box {
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px #666;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.horizontal-center-item {
+  margin: 2rem;
+  padding: 2rem;
+  background-color: #666;
+  color: #eee;
+}
+
+.center-inline {
+  background-color: #464646;
+  padding: 1rem;
+}
+
+.center-block {
+  width: 500px;
+  background-color: #464646;
+  padding: 1rem;
+}
+
+.vertical-center-item {
+  height: 500px;
+  margin: 2rem;
+  padding: 2rem;
+  background-color: #666;
+  color: #eee;
+}
+
+.pseudo-parent::after {
+  content: '';
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}

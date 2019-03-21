@@ -10,9 +10,9 @@ const app = document.getElementById('app')
 // 开始写项目代码
 
 // ------------- html -------------
-let index = require('type/html-code')
-
-app.innerHTML = index
+let horizontalVerticalCenter = require('type/html-code/horizontal-vertical-center')
+import 'type/html-code/horizontal-vertical-center/index.css'
+app.innerHTML = horizontalVerticalCenter
 // ------------- leetcode -------------
 import 'type/leetcode'
 

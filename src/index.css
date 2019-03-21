@@ -1,12 +1,16 @@
-body,
-html,
-#app {
-  width: 100%;
-  height: 100%;
+* {
+  box-sizing: content-box;
 }
+
+body,
+html {
+  width: 100%;
+}
+
 #app {
   width: 1200px;
   margin: 0 auto;
+  padding: 2rem 0;
   background-color: #eee;
 }
 
@@ -20,4 +24,41 @@ html,
 
 .fl {
   float: left;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.p-f-p {
+  color: #2196f3;
+}
+
+.p-f-s {
+  color: #ffc107;
+}
+
+.p-f-e {
+  color: #f44336;
+}
+
+.p-f-g {
+  color: #8bc34a;
+}
+
+/* 未访问的链接 */
+a:link {
+  color: #ce93d8;
+}
+/* 已访问的链接 */
+a:visited {
+  color: #ce93d8;
+}
+/* 鼠标移动到链接上 */
+a:hover {
+  color: #eee;
+}
+/* 选定的链接，即鼠标按下去的时候不松开显示的状态 */
+a:active {
+  color: #eee;
 }

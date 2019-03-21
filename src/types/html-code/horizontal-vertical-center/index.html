@@ -1,0 +1,210 @@
+<div class="center-container">
+  <div class="title ct">水平居中</div>
+
+  <div class="box horizontal-center-item" style="text-align: center;">
+    <span class="box ct center-inline">
+      <span>行内子元素水平居中</span>
+      <span class="p-f-p">父元素设置</span>
+      <span class="p-f-p">text-align: center;</span>
+    </span>
+  </div>
+
+  <div class="box horizontal-center-item">
+    <div class="box ct center-block" style="margin: 0 auto;">
+      <p>块级子元素水平居中 margin 实现</p>
+      <p class="p-f-s">子元素设置</p>
+      <p class="p-f-s">margin: 0 auto;</p>
+    </div>
+  </div>
+
+  <div class="box horizontal-center-item" style="width: fit-content;margin: 0 auto;height: 400px;">
+    <div class="box ct center-block" style="float: left;">
+      <p>子元素包含 float: left 属性的情况</p>
+      <p class="p-f-p">父元素设置</p>
+      <p class="p-f-p">width: fit-content;</p>
+      <p class="p-f-p">margin: 0 auto;</p>
+      <p class="p-f-s">子元素设置</p>
+      <p class="p-f-s">float: left;</p>
+      <p class="p-f-e">弊端</p>
+      <p class="p-f-e">
+        坑爹的是这个属性支持的实在是差
+        <a target="_black" href="https://caniuse.com/#search=fit-content">查看 fit-content 浏览器支持情况</a>
+      </p>
+      <p class="p-f-e">父元素不会自动撑开</p>
+      <p class="p-f-e">F12 打开可以看到这里的父元素是设置了固定的高度</p>
+    </div>
+  </div>
+
+  <div class="box horizontal-center-item" style="display: flex;justify-content: center;">
+    <div class="box ct center-block">
+      <p>块级子元素水平居中 flex 2012 版本实现</p>
+      <p class="p-f-p">父元素设置</p>
+      <p class="p-f-p">display: flex;</p>
+      <p class="p-f-p">justify-content: center;</p>
+    </div>
+  </div>
+
+  <div
+    class="box horizontal-center-item"
+    style="display: -webkit-box;-webkit-box-pack: center;-webkit-box-orient: horizontal;"
+  >
+    <div class="box ct center-block">
+      <p>块级子元素水平居中 flex 2009 版本实现</p>
+      <p class="p-f-p">父元素设置</p>
+      <p class="p-f-p">display: -webkit-box;</p>
+      <p class="p-f-p">-webkit-box-orient: horizontal;</p>
+      <p class="p-f-p">-webkit-box-pack: center;</p>
+    </div>
+  </div>
+
+  <div class="box horizontal-center-item" style="position: relative;height: 450px;">
+    <div class="box ct center-block" style="position: absolute;left: 50%;transform: translate(-50%, 0);">
+      <p>块级子元素水平居中 position + transform 实现</p>
+      <p class="p-f-p">父元素设置</p>
+      <p class="p-f-p">position: relative;</p>
+      <p class="p-f-s">子元素设置</p>
+      <p class="p-f-s">position: absolute;</p>
+      <p class="p-f-s">left: 50%;</p>
+      <p class="p-f-s">transform: translate(-50%, 0);</p>
+      <p class="p-f-e">弊端</p>
+      <p class="p-f-e">父元素不会自动撑开</p>
+      <p class="p-f-e">F12 打开可以看到这里的父元素是设置了固定的高度</p>
+    </div>
+  </div>
+
+  <div class="box horizontal-center-item" style="position: relative;height: 450px;">
+    <div class="box ct center-block" style="position: absolute;left: 50%;margin-left: -250px;">
+      <p>块级子元素水平居中 position + margin 实现</p>
+      <p class="p-f-p">父元素设置</p>
+      <p class="p-f-p">position: relative;</p>
+      <p class="p-f-s">子元素设置</p>
+      <p class="p-f-s">position: absolute;</p>
+      <p class="p-f-s">left: 50%;</p>
+      <p class="p-f-s">margin-left: -1/2 * ${child.width};</p>
+      <p class="p-f-e">弊端</p>
+      <p class="p-f-e">父元素不会自动撑开</p>
+      <p class="p-f-e">F12 打开可以看到这里的父元素是设置了固定的高度</p>
+    </div>
+  </div>
+
+  <div class="box horizontal-center-item" style="position: relative;height: 450px;">
+    <div class="box ct center-block" style="position: absolute;left: 0;right: 0;margin: 0 auto;">
+      <p>块级子元素水平居中 position + left + right + margin 实现</p>
+      <p class="p-f-p">父元素设置</p>
+      <p class="p-f-p">position: relative;</p>
+      <p class="p-f-s">子元素设置</p>
+      <p class="p-f-s">position: absolute;</p>
+      <p class="p-f-s">left: 0;</p>
+      <p class="p-f-s">right: 0;</p>
+      <p class="p-f-s">margin: 0 auto;</p>
+      <p class="p-f-e">弊端</p>
+      <p class="p-f-e">父元素不会自动撑开</p>
+      <p class="p-f-e">F12 打开可以看到这里的父元素是设置了固定的高度</p>
+    </div>
+  </div>
+
+  <div class="title ct">垂直居中</div>
+
+  <div class="box vertical-center-item">
+    <span class="box ct center-inline" style="line-height: 500px">
+      <span>单行文本垂直居中实现</span>
+      <span>若为单行行内元素，设置子元素 line-height = 父元素 height</span>
+      <span class="p-f-s">子元素设置</span>
+      <span class="p-f-s">line-height: ${parent.height}</span>
+    </span>
+  </div>
+
+  <div class="box vertical-center-item pseudo-parent">
+    <div class="box ct center-block" style="display: inline-block;vertical-align: middle;">
+      <p>块级元素垂直居中 inline-block + vertical-align + ::after 实现</p>
+      <p class="p-f-p">父元素伪类（::after）设置</p>
+      <p class="p-f-p">content: "";</p>
+      <p class="p-f-p">height: 100%;</p>
+      <p class="p-f-p">display: inline-block;</p>
+      <p class="p-f-p">vertical-align: middle;</p>
+      <p class="p-f-s">子元素设置</p>
+      <p class="p-f-s">display: inline-block;</p>
+      <p class="p-f-s">vertical-align: middle;</p>
+      <p class="p-f-g">优点</p>
+      <p class="p-f-g">适应 IE7</p>
+    </div>
+  </div>
+
+  <div class="box vertical-center-item" style="display: table;">
+    <div class="box ct center-block" style="display: table-cell;vertical-align: middle;">
+      <p>不定高块级元素垂直居中 display: table + vertical-align 实现</p>
+      <p class="p-f-p">父元素设置</p>
+      <p class="p-f-p">display: table;</p>
+      <p class="p-f-s">子元素设置</p>
+      <p class="p-f-s">display: table-cell;</p>
+      <p class="p-f-s">vertical-align: middle;</p>
+      <p class="p-f-g">优点</p>
+      <p class="p-f-g">高度可以动态改变</p>
+      <p class="p-f-e">弊端</p>
+      <p class="p-f-e">子元素的 padding 被自动设置（table-cell）</p>
+    </div>
+  </div>
+
+  <div class="box vertical-center-item" style="display: flex;align-items: center;">
+    <div class="box ct center-block">
+      <p>块级元素垂直居中 flex 2012 版本实现</p>
+      <p class="p-f-p">父元素设置</p>
+      <p class="p-f-p">display: flex;</p>
+      <p class="p-f-p">align-items: center;</p>
+      <p class="p-f-e">弊端</p>
+      <p class="p-f-e">IE 9 不兼容</p>
+    </div>
+  </div>
+
+  <div
+    class="box vertical-center-item"
+    style="display: -webkit-box;-webkit-box-orient: vertical;-webkit-box-pack: center;"
+  >
+    <div class="box ct center-block">
+      <p>块级元素垂直居中 flex 2009 版本实现</p>
+      <p class="p-f-p">父元素设置</p>
+      <p class="p-f-p">display: -webkit-box;</p>
+      <p class="p-f-p">-webkit-box-orient: vertical;</p>
+      <p class="p-f-p">-webkit-box-pack: center;</p>
+    </div>
+  </div>
+
+  <div class="box vertical-center-item" style="position: relative;">
+    <div class="box ct center-block" style="position: absolute;top: 50%;transform: translate(0, -50%);">
+      <p>块级元素垂直居中 position + transform 实现</p>
+      <p class="p-f-p">父元素设置</p>
+      <p class="p-f-p">position: relative;</p>
+      <p class="p-f-s">子元素设置</p>
+      <p class="p-f-s">position: absolute;</p>
+      <p class="p-f-s">top: 50%;</p>
+      <p class="p-f-s">translate(0, -50%);</p>
+    </div>
+  </div>
+
+  <div class="box vertical-center-item" style="position: relative;">
+    <div class="box ct center-block" style="height: 400px;position: absolute;top: 50%;margin-top: -200px;">
+      <p>固定高度块级元素垂直居中 position + margin 实现</p>
+      <p class="p-f-p">父元素设置</p>
+      <p class="p-f-p">position: relative;</p>
+      <p class="p-f-s">子元素设置</p>
+      <p class="p-f-s">position: absolute;</p>
+      <p class="p-f-s">top: 50%;</p>
+      <p class="p-f-s">margin-top: -1/2 * ${child.height};</p>
+      <p class="p-f-g">优点</p>
+      <p class="p-f-g">适应几乎所有浏览器</p>
+    </div>
+  </div>
+
+  <div class="box vertical-center-item" style="position: relative;">
+    <div class="box ct center-block" style="height: 400px;position: absolute;top: 0;bottom: 0;margin: auto 0;">
+      <p>固定高度块级元素垂直居中 position + top + bottom + margin 实现</p>
+      <p class="p-f-p">父元素设置</p>
+      <p class="p-f-p">position: relative;</p>
+      <p class="p-f-s">子元素设置</p>
+      <p class="p-f-s">position: absolute;</p>
+      <p class="p-f-s">top: 0;</p>
+      <p class="p-f-s">bottom: 0;</p>
+      <p class="p-f-s">margin: auto 0;</p>
+    </div>
+  </div>
+</div>
