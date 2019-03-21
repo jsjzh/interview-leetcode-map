@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-08 09:45:09
- * @LastEditTime: 2019-03-21 08:50:42
+ * @LastEditTime: 2019-03-21 09:51:12
  * @Description
  *  果然每天的生活都需要点算法题调剂调剂，每天都是重复的业务代码太无趣了，我渴望一点需要动脑子的东西，遂就有了这个小项目
  *  写上来的代码都是可以通过 leedcode 的测试的，只不过嘛，用时和内存消耗就没有那么完美了，但我会对不满意的题目重写一遍，开拓新的思路，撒花
@@ -585,3 +585,63 @@ function insertToPalindrome(str) {
   }
   return count
 }
+
+/**
+ * TODO
+ * 给定一个仅包含大小写字母和空格 " " 的字符串，返回其最后一个单词的长度。
+ * 如果不存在最后一个单词，请返回 0 。
+ * 说明：一个单词是指由字母组成，但不包含任何空格的字符串。
+ *
+ * @param {String} s
+ * @return {Number}
+ *
+ * 解题思路
+ * 这道题目，初看好像很简单，其实考察的就是细心，首先如果是单字母的字符串怎么处理，还有 "   " 怎么处理，还有 "a " 怎么处理
+ * 好像我这个解法耗时很长。。就感觉很蠢的样子
+ */
+let lengthOfLastWord = function(s) {
+  let arr = s.trim().split(' ')
+  return arr[arr.length - 1].length
+}
+
+/**
+ * CLEAR
+ * 给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。
+ * 最高位数字存放在数组的首位， 数组中每个元素只存储一个数字。
+ * 你可以假设除了整数 0 之外，这个整数不会以零开头。
+ *
+ * @param {Number[]} digits
+ * @return {Number[]}
+ *
+ * 解题思路
+ * 这道题的坑就在于若加一之后进位了该怎么办，因为数组中每个元素只存储一个数字
+ * 而且对于超出 js 的范围的数字该如何考虑呢？肯定不能简单的转为数字然后加一再分割（说啥呢，你不就是这么做的么？）
+ */
+let plusOne = function(digits) {
+  digits[digits.length - 1] += 1
+  for (let index = digits.length - 1; index >= 0; index--) {
+    let num = digits[index]
+    if (num < 10) continue
+    digits[index] = 0
+    if (digits[index - 1] != null) {
+      digits[index - 1] += 1
+    } else {
+      digits.unshift(0)
+      digits[index] += 1
+    }
+  }
+  return digits
+}
+
+/**
+ * 给定两个二进制字符串，返回他们的和（用二进制表示）。
+ * 输入为非空字符串且只包含数字 1 和 0。
+ *
+ * @param {String} a
+ * @param {String} b
+ * @return {String}
+ */
+let addBinary = function(a, b) {}
+
+console.log(addBinary('11', '1'))
+console.log(addBinary('1010', '1011'))
