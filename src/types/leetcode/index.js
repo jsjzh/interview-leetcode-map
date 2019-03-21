@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-08 09:45:09
- * @LastEditTime: 2019-03-21 09:51:12
+ * @LastEditTime: 2019-03-21 10:20:58
  * @Description
  *  果然每天的生活都需要点算法题调剂调剂，每天都是重复的业务代码太无趣了，我渴望一点需要动脑子的东西，遂就有了这个小项目
  *  写上来的代码都是可以通过 leedcode 的测试的，只不过嘛，用时和内存消耗就没有那么完美了，但我会对不满意的题目重写一遍，开拓新的思路，撒花
@@ -623,25 +623,30 @@ let plusOne = function(digits) {
     let num = digits[index]
     if (num < 10) continue
     digits[index] = 0
-    if (digits[index - 1] != null) {
-      digits[index - 1] += 1
-    } else {
-      digits.unshift(0)
-      digits[index] += 1
-    }
+    digits[index - 1] != null ? (digits[index - 1] += 1) : (digits.unshift(0), (digits[index] += 1))
   }
   return digits
 }
 
 /**
+ * TODO
  * 给定两个二进制字符串，返回他们的和（用二进制表示）。
  * 输入为非空字符串且只包含数字 1 和 0。
  *
  * @param {String} a
  * @param {String} b
  * @return {String}
+ *
+ * 解题思路
+ * 和上面的题目一样，需要考虑到超出 js 范围的数字应该怎么办，所以不能直接转数字
  */
 let addBinary = function(a, b) {}
 
-console.log(addBinary('11', '1'))
-console.log(addBinary('1010', '1011'))
+// 测试用例
+// "110111101100010011000101110110100000011101000101011001000011011000001100011110011010010011000000000"
+console.log(
+  addBinary(
+    '10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101',
+    '110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011'
+  )
+)
