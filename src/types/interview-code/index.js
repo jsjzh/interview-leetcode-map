@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-20 21:19:51
- * @LastEditTime: 2019-03-20 23:23:01
+ * @LastEditTime: 2019-03-21 08:36:15
  * @Description: 这里会收集平时看到的面试题，并附上自己的解答，基本上都会补充上来源和说明还有示例
  */
 
@@ -34,6 +34,7 @@ function transform(str) {
  *  merge([3,2,2,4,5,5,6,2,1]); // 输出[3,2,4,5,6,2,1]
  *  merge([3,2,3]); // 输出[3,2,3]
  *  merge([2,2,3]); // 输出[2,3]
+ * @param {Number[]} arr
  */
 function merge(arr) {
   for (let ind = 0; ind < arr.length; ind++) {
@@ -55,6 +56,7 @@ function merge(arr) {
  *  const multiply = (x, y) => x * y
  *  const multiplyAdd = composeFunctions(multiply, add)
  *  multiplyAdd(3, 4) // 返回 13
+ * @param  {...Function} args
  */
 function composeFunctions(...args) {
   return function(...params) {
@@ -80,18 +82,13 @@ function composeFunctions(...args) {
  * @param {Object[]} arrA
  * @param {Object[]} arrB
  */
-function demo(arrA, arrB) {
-  let arr = arrA.concat(arrB)
-  for (let i = 0; i < arr.length; i++) {
-    const item = arr[i]
-    for (let j = i; j < arr.length; j++) {
-      const element = arr[j]
-      if (item.id === element.id) arr.splice(i, 1)
-    }
-  }
-  return arr
+function mergeObjectArray(arrA, arrB) {
+  return arrB.reduce((pre, curr) => {
+    if (pre.findIndex(item => item.id === curr.id) !== -1) return pre
+    else return [...pre, curr]
+  }, arrA)
 }
 let arrA = [{ id: 1 }, { id: 2 }, { id: 3 }]
 let arrB = [{ id: 3 }, { id: 4 }, { id: 5 }]
 
-console.log(demo(arrA, arrB))
+console.log(mergeObjectArray(arrA, arrB))
