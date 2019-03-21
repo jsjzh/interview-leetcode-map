@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-20 21:19:51
- * @LastEditTime: 2019-03-21 08:36:15
+ * @LastEditTime: 2019-03-21 08:38:17
  * @Description: 这里会收集平时看到的面试题，并附上自己的解答，基本上都会补充上来源和说明还有示例
  */
 
@@ -88,7 +88,6 @@ function mergeObjectArray(arrA, arrB) {
     else return [...pre, curr]
   }, arrA)
 }
-let arrA = [{ id: 1 }, { id: 2 }, { id: 3 }]
-let arrB = [{ id: 3 }, { id: 4 }, { id: 5 }]
-
-console.log(mergeObjectArray(arrA, arrB))
+// let arrA = [{ id: 1 }, { id: 2 }, { id: 3 }]
+// let arrB = [{ id: 3 }, { id: 4 }, { id: 5 }]
+// console.log(mergeObjectArray(arrA, arrB))

@@ -6,12 +6,20 @@ import 'static/css/github-markdown.css'
 import './index.css'
 
 const app = document.getElementById('app')
-app.innerHTML = require('./index.html')
 // -------------
 // 开始写项目代码
 
-import 'type/interview-code'
-// import 'type/leetcode'
+// ------------- html -------------
+let index = require('type/html-code')
+
+app.innerHTML = index
+// ------------- leetcode -------------
+import 'type/leetcode'
+
+// ------------- interview -------------
+// import 'type/interview-code'
+
+// -------------
 
 if (module.hot) {
   console.log('------------------------ 天了噜 (╯‵□′)╯︵ 更新了 ------------------------')

@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-08 09:45:09
- * @LastEditTime: 2019-03-20 10:25:25
+ * @LastEditTime: 2019-03-21 08:50:42
  * @Description
  *  果然每天的生活都需要点算法题调剂调剂，每天都是重复的业务代码太无趣了，我渴望一点需要动脑子的东西，遂就有了这个小项目
  *  写上来的代码都是可以通过 leedcode 的测试的，只不过嘛，用时和内存消耗就没有那么完美了，但我会对不满意的题目重写一遍，开拓新的思路，撒花
@@ -391,12 +391,13 @@ let countAndSay = function(n) {
  * @return {Number}
  *
  * 解题思路
+ * 妈耶，这个好烦，解不出来，先放着，以后再来想！！！
  */
 let maxSubArray = function(nums) {
   let max = nums[0]
   return max
 }
-console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+// console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
 
 /**
  * 拓展学习
@@ -407,15 +408,13 @@ console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
  * 在获取 n2 的时候，由于 n2 都是等于 n-2 的值，而之前已经求过 n-1，而看我们的代码
  * 在求解 n-1 的时候就已经将其存储起来
  */
-let fibonacciMark_upToDown = { 0: 0 }
-function fibonacci_upToDown(n) {
+let fibonacciMark_utd = { 0: 0 }
+function fibonacci_utd(n) {
   if (n <= 0) return 0
   if (n === 1) return 1
   let n1 =
-    fibonacciMark_upToDown[n - 1] != null
-      ? fibonacciMark_upToDown[n - 1]
-      : (fibonacciMark_upToDown[n - 1] = fibonacci_upToDown(n - 1))
-  let n2 = fibonacciMark_upToDown[n - 2]
+    fibonacciMark_utd[n - 1] != null ? fibonacciMark_utd[n - 1] : (fibonacciMark_utd[n - 1] = fibonacci_utd(n - 1))
+  let n2 = fibonacciMark_utd[n - 2]
   return n1 + n2
 }
 
@@ -427,7 +426,7 @@ function fibonacci_upToDown(n) {
  * 但其实我的理解就是，斐波那契数列其实质就是一个存储的过程
  * 下一个数等于前两个数之和，不就是存储吗？
  */
-function fibonacci_downToUp(n) {
+function fibonacci_dtu(n) {
   let x1 = 0
   let x2 = 1
   for (let ind = 0; ind < n; ind++) {
@@ -463,23 +462,23 @@ function cut(steelPrices, len) {
 
 /**
  * 钢铁切割问题的从上往下递归的备忘录版本
- * cutMark_upToDown 就是备忘录
+ * cutMark_utd 就是备忘录
  * 和斐波那契数列的类似，就是每次将其存储起来以保证下次可以直接获取最优解
  * 减少了大量递归次数
  *
  * 解题思路
  */
-let cutMark_upToDown = { 0: 0 }
-function cut_upToDown(steelPrices, len) {
+let cutMark_utd = { 0: 0 }
+function cut_utd(steelPrices, len) {
   if (len > steelPrices.length) throw new Error('传入的 len 不得大于字典的长度，因为就无法获取该长度不截取时候的价格了')
   if (len === 0) return 0
   if (len === 1) return steelPrices[0]
   let max = 0
   for (let ind = 1; ind <= len; ind++) {
     let start = steelPrices[ind - 1]
-    let end = cutMark_upToDown[len - ind]
-      ? cutMark_upToDown[len - ind]
-      : (cutMark_upToDown[len - ind] = cut_upToDown(steelPrices, len - ind))
+    let end = cutMark_utd[len - ind]
+      ? cutMark_utd[len - ind]
+      : (cutMark_utd[len - ind] = cut_utd(steelPrices, len - ind))
     max = Math.max(max, start + end)
   }
   return max
@@ -491,17 +490,17 @@ function cut_upToDown(steelPrices, len) {
  *
  * 解题思路
  */
-let cutMark_downToUp = { 0: 0 }
-function cut_downToUp(steelPrices, len) {
+let cutMark_dtu = { 0: 0 }
+function cut_dtu(steelPrices, len) {
   if (len > steelPrices.length) throw new Error('传入的 len 不得大于字典的长度，因为就无法获取该长度不截取时候的价格了')
   for (let ind = 1; ind <= steelPrices.length; ind++) {
     let max = 0
     for (let cutLen = 1; cutLen <= ind; cutLen++) {
-      max = Math.max(max, steelPrices[cutLen - 1] + cutMark_downToUp[ind - cutLen])
+      max = Math.max(max, steelPrices[cutLen - 1] + cutMark_dtu[ind - cutLen])
     }
-    cutMark_downToUp[ind] = max
+    cutMark_dtu[ind] = max
   }
-  return cutMark_downToUp[len]
+  return cutMark_dtu[len]
 }
 
 /**

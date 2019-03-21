@@ -20,7 +20,7 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    extensions: ['.js', '.json'],
+    extensions: ['.js', '.json', '.html'],
     alias: {
       '@': utils.resolve('src'),
       static: utils.resolve('static'),
