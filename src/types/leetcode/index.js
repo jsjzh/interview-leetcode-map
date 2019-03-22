@@ -3,13 +3,13 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-08 09:45:09
- * @LastEditTime: 2019-03-22 09:00:48
+ * @LastEditTime: 2019-03-22 09:35:42
  * @Description
  *  果然每天的生活都需要点算法题调剂调剂，每天都是重复的业务代码太无趣了，我渴望一点需要动脑子的东西，遂就有了这个小项目
  *  写上来的代码都是可以通过 leedcode 的测试的，只不过嘛，用时和内存消耗就没有那么完美了，但我会对不满意的题目重写一遍，开拓新的思路，撒花
  */
 
-import { ListNode } from './util'
+import { ListNode, TreeNode } from './util'
 
 /**
  * CLEAR
@@ -184,6 +184,7 @@ let mergeTwoLists = function(l1, l2) {
 // 测试用例
 // let L = new ListNode(-2).push(5)
 // let R = new ListNode(-9).push(-6).push(-3).push(-1).push(1).push(6)
+// console.log(mergeTwoLists(L, R).toString())
 
 /**
  * CLEAR
@@ -649,7 +650,7 @@ let mySqrt = function(x) {}
  * @param {Number} n
  * @return {Number}
  */
-// 递归版本，很容易懂，但是数字大了之后就凉凉
+// 递归版本，很容易懂，但是数字大了之后就凉凉，马上就溢出了
 function climbStairs(n) {
   if (n === 1) return 1
   if (n === 2) return 2
@@ -704,3 +705,40 @@ let deleteDuplicates = function(head) {
 // 测试用例
 // let deleteDuplicatesTest = new ListNode(1).push(1).push(2)
 // console.log(deleteDuplicates(deleteDuplicatesTest).toString())
+
+/**
+ * TODO
+ * 给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。
+ * 初始化 nums1 和 nums2 的元素数量分别为 m 和 n。
+ * 你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。
+ * @param {Number[]} nums1
+ * @param {Number} m
+ * @param {Number[]} nums2
+ * @param {Number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+ */
+let merge = function(nums1, m, nums2, n) {}
+console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3))
+
+/**
+ * TODO
+ * 给定两个二叉树，编写一个函数来检验它们是否相同。
+ * 如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。
+ *
+ *   1        1
+ *  2 3      2 3
+ * [1,2,3]  [1,2,3]
+ * output: true
+ *
+ *   1        1
+ *  2          2
+ * [1,2]    [1,null,2]
+ * output: false
+ * @param {TreeNode} p
+ * @param {TreeNode} q
+ * @return {Boolean}
+ */
+let isSameTree = function(p, q) {}
+
+let lTree = new TreeNode([1, 2, 3])
+let rTree = new TreeNode([1, null, 3])
