@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-22 08:47:11
- * @LastEditTime: 2019-03-22 09:55:02
+ * @LastEditTime: 2019-03-22 22:16:00
  * @Description: helper 函数集合，一般是 leetcode 中的题目已经定义的函数，比如单向链表，二叉树之类的
  */
 /**
@@ -39,19 +39,44 @@ export class ListNode {
   }
 }
 
+// [1,2,3,4,5]
 export class TreeNode {
   constructor(val) {
     this.val = val
     this.left = null
     this.right = null
   }
-  push(val) {
-    let currNode = this
-    let oldLeft = currNode.left
-    let oldRight = currNode.right
-    while (currNode.left && currNode.right) {
-      currNode = currNode.left
-    }
-    return this
-  }
+  // push(val) {
+  //   let node = new TreeNode(val)
+
+
+  //   let flag = true
+  //   function setNode(currNode) {
+  //     if (currNode.left && currNode.right) {
+  //       if (currNode.left.right && currNode.right.right) {
+          
+  //       }
+  //       if (currNode.left.right) {
+  //         setNode(currNode.right)
+  //       } else {
+  //         setNode(currNode.left)
+  //       }
+  //     }
+
+  //     while (flag && (!currNode.left || !currNode.right)) {
+  //       if (!currNode.left) {
+  //         currNode.left = node
+  //         flag = false
+  //       } else if (!currNode.right) {
+  //         currNode.right = node
+  //         flag = false
+  //       }
+  //     }
+
+  //     return flag
+  //   }
+
+  //   setNode(this)
+  //   return this
+  // }
 }

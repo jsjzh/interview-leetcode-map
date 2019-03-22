@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-08 09:45:09
- * @LastEditTime: 2019-03-22 15:18:59
+ * @LastEditTime: 2019-03-22 22:11:19
  * @Description
  *  果然每天的生活都需要点算法题调剂调剂，每天都是重复的业务代码太无趣了，我渴望一点需要动脑子的东西，遂就有了这个小项目
  *  写上来的代码都是可以通过 leedcode 的测试的，只不过嘛，用时和内存消耗就没有那么完美了，但我会对不满意的题目重写一遍，开拓新的思路，撒花
@@ -745,6 +745,12 @@ let lTree = new TreeNode(1)
   .push(2)
   .push(3)
   .push(4)
+  .push(5)
+  .push(6)
+  .push(7)
+  .push(8)
+  .push(9)
+  .push(10)
 // let rTree = new TreeNode(1).push(null).push(3).push(4)
 console.log(lTree)
 // console.log(rTree)
