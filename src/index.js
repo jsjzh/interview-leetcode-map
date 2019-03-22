@@ -6,6 +6,6 @@ import './index.css'
 
 import './init'
 // ------------- leetcode -------------
-import 'leetcode'
+// import 'leetcode'
 // ------------- interview -------------
 // import 'interview'
