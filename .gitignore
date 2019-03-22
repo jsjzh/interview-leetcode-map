@@ -19,3 +19,4 @@ yarn.lock
 
 # parcel
 .cache
+.devcache

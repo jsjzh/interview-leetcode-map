@@ -46,19 +46,15 @@ p {
   color: #8bc34a;
 }
 
-/* 未访问的链接 */
 a:link {
   color: #ce93d8;
 }
-/* 已访问的链接 */
 a:visited {
   color: #ce93d8;
 }
-/* 鼠标移动到链接上 */
 a:hover {
   color: #eee;
 }
-/* 选定的链接，即鼠标按下去的时候不松开显示的状态 */
 a:active {
   color: #eee;
 }
