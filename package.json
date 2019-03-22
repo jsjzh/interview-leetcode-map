@@ -5,7 +5,7 @@
   "author": "jsjzh <kimimi_king@163.com>",
   "license": "ISC",
   "scripts": {
-    "dev": "parcel serve src/index.html --out-dir .devcache/dist --port 8080",
+    "dev": "parcel serve src/index.html --out-dir .devcache/dist --port 8080 --no-autoinstall",
     "build": "parcel build src/index.html --out-dir dist --no-source-maps",
     "start": "npm run dev"
   },
@@ -13,7 +13,10 @@
     "src": "./src",
     "static": "./static",
     "types": "./src/types",
-    "utils": "./src/utils"
+    "utils": "./src/utils",
+    "html": "./src/types/html-code",
+    "interview": "./src/types/interview-code",
+    "leetcode": "./src/types/leetcode"
   },
   "devDependencies": {
     "autoprefixer": "^9.5.0",

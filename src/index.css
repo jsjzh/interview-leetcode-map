@@ -1,3 +1,8 @@
+:root {
+  --header-height: 60px;
+  --default-bg: #eee;
+}
+
 * {
   box-sizing: content-box;
 }
@@ -7,11 +12,44 @@ html {
   width: 100%;
 }
 
+#header {
+  position: fixed;
+  width: 100%;
+  height: var(--header-height);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: #fff;
+  box-shadow: 1px 1px 1px #666;
+}
+
+#header ul {
+  width: 100%;
+  height: var(--header-height);
+}
+
+#header ul > li {
+  display: inline-block;
+  height: var(--header-height);
+  line-height: var(--header-height);
+  min-width: 80px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#header ul > li:hover {
+  color: #2196f3;
+}
+
 #app {
   width: 1200px;
   margin: 0 auto;
+  min-height: 300px;
+  margin-top: calc(var(--header-height) + 20px);
   padding: 2rem 0;
-  background-color: #eee;
+  background-color: var(--default-bg);
 }
 
 .ct {
@@ -53,8 +91,8 @@ a:visited {
   color: #ce93d8;
 }
 a:hover {
-  color: #eee;
+  color: var(--default-bg);
 }
 a:active {
-  color: #eee;
+  color: var(--default-bg);
 }
