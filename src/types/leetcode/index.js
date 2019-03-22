@@ -3,11 +3,13 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-08 09:45:09
- * @LastEditTime: 2019-03-21 10:20:58
+ * @LastEditTime: 2019-03-22 09:00:48
  * @Description
  *  果然每天的生活都需要点算法题调剂调剂，每天都是重复的业务代码太无趣了，我渴望一点需要动脑子的东西，遂就有了这个小项目
  *  写上来的代码都是可以通过 leedcode 的测试的，只不过嘛，用时和内存消耗就没有那么完美了，但我会对不满意的题目重写一遍，开拓新的思路，撒花
  */
+
+import { ListNode } from './util'
 
 /**
  * CLEAR
@@ -154,31 +156,6 @@ let isValid = function(s) {
  * @param {ListNode} l2
  * @return {ListNode}
  */
-// Definition for singly-linked list
-function ListNode(val) {
-  this.val = val
-  this.next = null
-}
-// 对链表不产生影响，方便测试
-ListNode.prototype.push = function(num) {
-  let newNode = new ListNode(num)
-  let currNode = this
-  while (currNode.next) currNode = currNode.next
-  currNode.next = newNode
-  return this
-}
-// 对链表不产生影响，方便测试
-ListNode.prototype.toString = function() {
-  let currNode = this
-  let str = ''
-  while (currNode.next) {
-    str += currNode.val + ','
-    currNode = currNode.next
-  }
-  str += currNode.val
-  return str
-}
-
 let mergeTwoLists = function(l1, l2) {
   if (l1 === null || l1.val === null) return l2
   if (l2 === null || l2.val === null) return l1
@@ -641,12 +618,89 @@ let plusOne = function(digits) {
  * 和上面的题目一样，需要考虑到超出 js 范围的数字应该怎么办，所以不能直接转数字
  */
 let addBinary = function(a, b) {}
-
 // 测试用例
 // "110111101100010011000101110110100000011101000101011001000011011000001100011110011010010011000000000"
-console.log(
-  addBinary(
-    '10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101',
-    '110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011'
-  )
-)
+// console.log(
+//   addBinary(
+//     '10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101',
+//     '110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011'
+//   )
+// )
+
+/**
+ * TODO
+ * 实现 int sqrt(int x) 函数。
+ * 计算并返回 x 的平方根，其中 x 是非负整数。
+ * 由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。
+ * @param {Number} x
+ * @return {Number}
+ */
+let mySqrt = function(x) {}
+
+/**
+ * CLEAR
+ * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+ * 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+ * 注意：给定 n 是一个正整数。
+ *
+ * 解题思路
+ * 咋一看好像有点麻烦，但是想一想其实就是个动态规划，假设你在 n，那你要达到 n 就有两种方法
+ * 第一个是从 n-1 爬一步，一个是从 n-2 爬两步，换个方向想，也就是说第三个等于前两个之和，那其实就是斐波那契数列
+ * @param {Number} n
+ * @return {Number}
+ */
+// 递归版本，很容易懂，但是数字大了之后就凉凉
+function climbStairs(n) {
+  if (n === 1) return 1
+  if (n === 2) return 2
+  let sum = 0
+  sum = climbStairs(n - 1) + climbStairs(n - 2)
+  return sum
+}
+
+// 动态规划的备忘录版本，由上至下
+let proClimbStairsMark = { 1: 1, 2: 2 }
+function proClimbStairs(n) {
+  if (n === 1) return 1
+  if (n === 2) return 2
+  let sum = 0
+  let prev = proClimbStairsMark[n - 1] ? proClimbStairsMark[n - 1] : (proClimbStairsMark[n - 1] = proClimbStairs(n - 1))
+  let prev2 = proClimbStairsMark[n - 2]
+  sum = prev + prev2
+  return sum
+}
+
+// 动态规划由下至上版本
+function superClimbStairs(n) {
+  let first = 1
+  let next = 1
+  for (let ind = 1; ind < n; ind++) {
+    let oldNext = next
+    next += first
+    first = oldNext
+  }
+  return next
+}
+
+/**
+ * CLEAR
+ * 给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+let deleteDuplicates = function(head) {
+  if (!head) return head
+  if (head.val == null) return head
+  let currNode = head
+  while (currNode.next) {
+    if (currNode.val === currNode.next.val) {
+      currNode.next = currNode.next.next
+    } else {
+      currNode = currNode.next
+    }
+  }
+  return head
+}
+// 测试用例
+// let deleteDuplicatesTest = new ListNode(1).push(1).push(2)
+// console.log(deleteDuplicates(deleteDuplicatesTest).toString())
