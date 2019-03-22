@@ -1,5 +1,4 @@
-// 在 webpack.config.js 中配置了 alias
-// 会自动解析 static 为 webpack.config.js 目录下的 utils.resolve("static")
+import 'babel-polyfill'
 import 'static/css/normalize.css'
 import 'static/css/reset.css'
 import 'static/css/github-markdown.css'
@@ -10,18 +9,22 @@ const app = document.getElementById('app')
 // 开始写项目代码
 
 // ------------- html -------------
-// let horizontalVerticalCenter = require('type/html-code/horizontal-vertical-center')
-// import 'type/html-code/horizontal-vertical-center/index.css'
+// let horizontalVerticalCenter = require('types/html-code/horizontal-vertical-center')
+// import 'types/html-code/horizontal-vertical-center/index.css'
 // app.innerHTML = horizontalVerticalCenter
 // ------------- leetcode -------------
-import 'type/leetcode'
+import 'types/leetcode'
 
 // ------------- interview -------------
-// import 'type/interview-code'
+// import 'types/interview-code'
 
 // -------------
-
 if (module.hot) {
-  console.log('------------------------ 天了噜 (╯‵□′)╯︵ 更新了 ------------------------')
-  module.hot.accept()
+  module.hot.dispose(function() {
+    console.log('module is about to be replaced')
+  })
+
+  module.hot.accept(function() {
+    console.log('module or one of its dependencies was just updated')
+  })
 }
