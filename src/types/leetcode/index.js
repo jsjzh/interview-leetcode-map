@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-08 09:45:09
- * @LastEditTime: 2019-03-24 09:38:07
+ * @LastEditTime: 2019-03-24 10:20:04
  * @Description
  *  果然每天的生活都需要点算法题调剂调剂，每天都是重复的业务代码太无趣了，我渴望一点需要动脑子的东西，遂就有了这个小项目
  *  写上来的代码都是可以通过 leedcode 的测试的，只不过嘛，用时和内存消耗就没有那么完美了，但我会对不满意的题目重写一遍，开拓新的思路，撒花
@@ -760,6 +760,7 @@ let isSameTree = function(p, q) {
  *    1
  *  2   2
  * 3 4 4 3
+ *
  * 解题思路
  * 暂时就只想到递归的做法，而且还新声明了一个函数
  * 迭代的做法暂时没想到
@@ -776,4 +777,43 @@ let isSymmetric = function(root) {
     return judge(left.left, right.right) && judge(left.right, right.left)
   }
   return judge(root.left, root.right)
+}
+
+/**
+ * CLEAR
+ * 给定一个二叉树，找出其最大深度。
+ * 二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
+ * 说明: 叶子节点是指没有子节点的节点。
+ * 给定二叉树 [3,9,20,null,null,15,7]
+ *     3
+ *  9    20
+ *     15   7
+ * 最大深度为 3
+ * @param {TreeNode} root
+ * @return {Number}
+ */
+let maxDepth = function(root) {
+  if (!root) return 0
+  if (!root.left && !root.right) return 1
+  return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1
+}
+
+/**
+ * TODO
+ * 给定一个二叉树，返回其节点值自底向上的层次遍历。
+ * 即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历。
+ * 给定二叉树 [3,9,20,null,null,15,7]
+ *     3
+ *   9   20
+ *     15   7
+ * [
+ *   [15,7],
+ *   [9,20],
+ *   [3]
+ * ]
+ * @param {TreeNode} root
+ * @return {Number[][]}
+ */
+let levelOrderBottom = function(root) {
+  let arr = []
 }
