@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-08 09:45:09
- * @LastEditTime: 2019-03-24 08:39:50
+ * @LastEditTime: 2019-03-24 09:38:07
  * @Description
  *  果然每天的生活都需要点算法题调剂调剂，每天都是重复的业务代码太无趣了，我渴望一点需要动脑子的东西，遂就有了这个小项目
  *  写上来的代码都是可以通过 leedcode 的测试的，只不过嘛，用时和内存消耗就没有那么完美了，但我会对不满意的题目重写一遍，开拓新的思路，撒花
@@ -728,7 +728,7 @@ let merge = function(nums1, m, nums2, n) {}
 // console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3))
 
 /**
- * TODO
+ * CLEAR
  * 给定两个二叉树，编写一个函数来检验它们是否相同。
  * 如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。
  *
@@ -745,9 +745,35 @@ let merge = function(nums1, m, nums2, n) {}
  * @param {TreeNode} q
  * @return {Boolean}
  */
-let isSameTree = function(p, q) {}
+let isSameTree = function(p, q) {
+  if (p === null) return q === null
+  if (q === null) return p === null
+  if (q.val !== p.val) return false
+  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
+}
 
-// let lTree = new TreeNode(1)
-// let rTree = new TreeNode(1).push(null).push(3).push(4)
-// console.log(lTree)
-// console.log(rTree)
+/**
+ * CLEAR
+ * 给定一个二叉树，检查它是否是镜像对称的。
+ * 例如，二叉树 [1,2,2,3,4,4,3] 是对称的。
+ * 如果你可以运用递归和迭代两种方法解决这个问题，会很加分。
+ *    1
+ *  2   2
+ * 3 4 4 3
+ * 解题思路
+ * 暂时就只想到递归的做法，而且还新声明了一个函数
+ * 迭代的做法暂时没想到
+ * @param {TreeNode} root
+ * @return {Boolean}
+ */
+let isSymmetric = function(root) {
+  if (!root) return true
+  if (!root.val && (!root.left && !root.right)) return true
+  function judge(left, right) {
+    if (left === null) return right === null
+    if (right === null) return left === null
+    if (left.val !== right.val) return false
+    return judge(left.left, right.right) && judge(left.right, right.left)
+  }
+  return judge(root.left, root.right)
+}
