@@ -9,4 +9,4 @@ import './init'
 // import 'leetcode'
 // ------------- interview -------------
 // import 'interview'
-import 'interview/promise'
+// import 'interview/promise'
