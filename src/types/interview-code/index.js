@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-20 21:19:51
- * @LastEditTime: 2019-03-25 13:48:34
+ * @LastEditTime: 2019-03-25 16:45:01
  * @Description: 这里会收集平时看到的面试题，并附上自己的解答，基本上都会补充上来源和说明还有示例
  */
 
@@ -240,23 +240,44 @@ function bubbleSort(arr) {
 }
 // console.log(bubbleSort(arr))
 /**
+ * TODO
  * 冒泡排序改进版
  * 设置标志性变量 pos，用于记录每趟排序中最后一次进行交换的位置
  * 由于 pos 位置之后的记录均已交换到位，所以在下一次排序中只要遍历到 pos 位置即可
  * @param {Number[]} arr
  */
-function posBubbleSort(arr) {
-  let i = arr.length - 1
-  while (i > 0) {
-    let pos = 0
-    for (let j = 0; j < i; j++) {
-      if (arr[j] > arr[j + 1]) {
-        pos = j
-        if (arr[j] > arr[j + 1]) swap(arr, j, j + 1)
-      }
+// function posBubbleSort(arr) {
+//   let i = arr.length - 1
+//   while (i > 0) {
+//     let pos = 0
+//     for (let j = 0; j < i; j++) {
+//       if (arr[j] > arr[j + 1]) {
+//         pos = j
+//         if (arr[j] > arr[j + 1]) swap(arr, j, j + 1)
+//       }
+//     }
+//     i = pos
+//   }
+//   return arr
+// }
+// console.log(posBubbleSort(arr))
+
+/**
+ * 快速排序
+ * @param {Number[]} arr
+ */
+function quickSort(arr) {
+  if (arr.length <= 1) return arr
+  let temp = arr[0]
+  let left = []
+  let right = []
+  for (var i = 1; i < arr.length; i++) {
+    if (arr[i] > temp) {
+      right.push(arr[i])
+    } else {
+      left.push(arr[i])
     }
-    i = pos
   }
-  return arr
+  return quickSort(left).concat([temp], quickSort(right))
 }
-console.log(posBubbleSort(arr))
+// console.log(quickSort(arr))
