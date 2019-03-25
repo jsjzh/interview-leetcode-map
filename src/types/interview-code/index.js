@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-20 21:19:51
- * @LastEditTime: 2019-03-25 11:48:41
+ * @LastEditTime: 2019-03-25 13:48:34
  * @Description: 这里会收集平时看到的面试题，并附上自己的解答，基本上都会补充上来源和说明还有示例
  */
 
@@ -125,6 +125,86 @@ function dimensionality(arr) {
 // console.log(dimensionality(dimensionality_input))
 
 /**
+ * 来源：创邻面试题
+ * 需求：
+ * 想买尽可能多的种类，每种只买一件，同时总价格还不能超过预算上限
+ * 第一个是预算上限
+ * 第二个是用空格分隔的一组数字，代表每种物品的价格
+ * 所有数字都为正整数并且不会超过10000
+ *
+ * @param {Number} total 限制价格
+ * @param {String} prices 商品价格，用 ' ' 分割
+ */
+function calCases(total, prices) {
+  let arr = prices
+    .split(' ')
+    .map(Number)
+    .sort((a, b) => a - b)
+  let sum = 0
+  for (let ind = 0; ind < arr.length; ind++) {
+    const price = arr[ind]
+    let oldSum = sum
+    sum += price
+    if (sum >= total) {
+      sum = oldSum
+      break
+    }
+  }
+  return sum
+}
+// console.log(calCases(188, '50 42 9 15 105 63 14 30'))
+
+/**
+ * 来源：创邻面试题
+ *
+ * 需求：
+ * 构建一个 n * n 的格子，默认背景色都是白色
+ * 鼠标指针指上去的格子底色要变成红色，鼠标移出时复原
+ * 鼠标点击格子时背景色固定为蓝色，指针hover时也不变红，再次点击时复原成未点击的状态
+ * 格子大小可用css控制,底色变化用js实现
+ *
+ * @param {Number} n 格子行数和每行个数
+ */
+function createBlock(n) {
+  function handleMouseEnter(event) {
+    this.style.backgroundColor = 'red'
+  }
+  function handleMouseLeave(event) {
+    this.style.backgroundColor = 'white'
+  }
+  function handleClick(event) {
+    let { isClick } = this.dataset
+    if (isClick === 'true') {
+      this.style.backgroundColor = 'white'
+      this.setAttribute('data-isClick', false)
+      this.addEventListener('mouseenter', handleMouseEnter)
+      this.addEventListener('mouseleave', handleMouseLeave)
+    } else {
+      this.setAttribute('data-isClick', true)
+      this.style.backgroundColor = 'blue'
+      this.removeEventListener('mouseenter', handleMouseEnter)
+      this.removeEventListener('mouseleave', handleMouseLeave)
+    }
+  }
+
+  let div = document.createElement('div')
+  for (let i = 0; i < n; i++) {
+    let ul = document.createElement('ul')
+    for (let j = 0; j < n; j++) {
+      let li = document.createElement('li')
+      li.style.cssText = ';display:inline-block;width:50px;height:50px;background-color:white;'
+      li.addEventListener('mouseenter', handleMouseEnter)
+      li.addEventListener('mouseleave', handleMouseLeave)
+      li.addEventListener('click', handleClick)
+      ul.appendChild(li)
+    }
+    div.appendChild(ul)
+  }
+  return div
+}
+// document.documentElement.appendChild(createBlock(5))
+
+/**
  * 实现各种排序算法
  * 除了特殊说明，默认都是从小到大排序
  */
@@ -169,11 +249,12 @@ function posBubbleSort(arr) {
   let i = arr.length - 1
   while (i > 0) {
     let pos = 0
-    for (let j = 0; j < i; j++)
+    for (let j = 0; j < i; j++) {
       if (arr[j] > arr[j + 1]) {
         pos = j
         if (arr[j] > arr[j + 1]) swap(arr, j, j + 1)
       }
+    }
     i = pos
   }
   return arr
