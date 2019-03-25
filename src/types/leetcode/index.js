@@ -3,13 +3,13 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-08 09:45:09
- * @LastEditTime: 2019-03-24 10:20:04
+ * @LastEditTime: 2019-03-25 09:44:21
  * @Description
  *  果然每天的生活都需要点算法题调剂调剂，每天都是重复的业务代码太无趣了，我渴望一点需要动脑子的东西，遂就有了这个小项目
  *  写上来的代码都是可以通过 leedcode 的测试的，只不过嘛，用时和内存消耗就没有那么完美了，但我会对不满意的题目重写一遍，开拓新的思路，撒花
  */
 
-import { ListNode, TreeNode } from './util'
+import { ListNode, TreeNode, TestTreeNode } from './util'
 
 /**
  * CLEAR
@@ -815,5 +815,17 @@ let maxDepth = function(root) {
  * @return {Number[][]}
  */
 let levelOrderBottom = function(root) {
-  let arr = []
+  if (!root.val || (!root.left && !root.right)) return []
+  let arr = [root.val]
+  function levelToArr(left, right) {
+    if (!left || !right) return []
+    let sum = []
+    if (left.val) sum.push(left.val)
+    if (right.val) sum.push(right.val)
+    return sum.concat(levelToArr(left.left, left.right))
+  }
+  return arr.concat(levelToArr(root.left, root.right))
 }
+
+// console.log(new TestTreeNode([3, 9, 20, null, null, 15, 7]))
+// console.log(levelOrderBottom(new TestTreeNode([3, 9, 20, null, null, 15, 7])))
