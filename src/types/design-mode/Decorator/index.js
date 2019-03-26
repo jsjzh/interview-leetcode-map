@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-26 09:19:10
- * @LastEditTime: 2019-03-26 11:47:24
+ * @LastEditTime: 2019-03-26 11:50:40
  * @Description: 装饰者模式
  *
  * 在不改变对象自身的基础上，在程序运行期间给对象动态地添加方法
@@ -100,15 +100,18 @@ sendData = sendData.before(validata)
  * 若有 plugin 则使用 plugin 后面依次
  */
 let getPlugin = function() {
-  return { type: 'plugin' }
+  let hasPlugin = true
+  if (hasPlugin) return { type: 'plugin' }
   return null
 }
 let getHtml5 = function() {
-  return { type: 'html5' }
+  let hasHtml5 = true
+  if (hasHtml5) return { type: 'html5' }
   return null
 }
 let getFlash = function() {
-  return { type: 'flash' }
+  let hasFlash = true
+  if (hasFlash) return { type: 'flash' }
   return null
 }
 let getUpload = getPlugin.after(getHtml5).after(getFlash)
