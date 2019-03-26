@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-25 22:17:07
- * @LastEditTime: 2019-03-26 09:02:20
+ * @LastEditTime: 2019-03-26 09:32:20
  * @Description: 代理模式
  * 为一个对象提供一个代用品或占位符，以便控制对它的访问
  *
@@ -33,3 +33,5 @@ export const setImgAgency = (function() {
     }
   }
 })()
+
+setImgAgency.setSrc(document.getElementById('agencyImg'), 'http://lensbuyersguide.com/gallery/219/2/23_iso100_14mm.jpg')

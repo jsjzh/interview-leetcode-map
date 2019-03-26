@@ -3,36 +3,36 @@
   height: 100%;
 }
 
-.box {
+.center-container .box {
   border-radius: 5px;
   box-shadow: 1px 1px 10px #666;
 }
 
-.title {
+.center-container .title {
   font-size: 2rem;
   font-weight: 600;
   color: #666;
 }
 
-.horizontal-center-item {
+.center-container .horizontal-center-item {
   margin: 2rem;
   padding: 2rem;
   background-color: #666;
   color: #eee;
 }
 
-.center-inline {
+.center-container .center-inline {
   background-color: #464646;
   padding: 1rem;
 }
 
-.center-block {
+.center-container .center-block {
   width: 500px;
   background-color: #464646;
   padding: 1rem;
 }
 
-.vertical-center-item {
+.center-container .vertical-center-item {
   height: 500px;
   margin: 2rem;
   padding: 2rem;
@@ -40,7 +40,7 @@
   color: #eee;
 }
 
-.pseudo-parent::after {
+.center-container .pseudo-parent::after {
   content: '';
   height: 100%;
   display: inline-block;
