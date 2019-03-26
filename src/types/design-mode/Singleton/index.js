@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-25 21:31:20
- * @LastEditTime: 2019-03-26 09:31:53
+ * @LastEditTime: 2019-03-26 10:06:32
  * @Description: 单例模式
  * 保证一个类仅有一个实例，并提供一个访问它的全局访问点
  * 实现的方法为先判断实例存在与否，如果存在则直接返回
@@ -16,22 +16,16 @@
 
 class Singleton {
   constructor(val) {
+    if (Singleton.$$instance instanceof Singleton) {
+      return Singleton.$$instance
+    }
     this.val = val
-    this.instance = null
+    Singleton.$$instance = this
+    return this
   }
   getVal() {
     return this.val
   }
 }
 
-// 代理 Singleton，以此来保证 new 多次都能返回同一个实例
-export const ProxySingleton = (function() {
-  // 每次找的都是这个实例
-  let instance = null
-  return function(val) {
-    if (!instance) instance = new Singleton(val)
-    return instance
-  }
-})()
-
-console.log(new ProxySingleton('foo') === new ProxySingleton('bar'))
+console.log(new Singleton('foo') === new Singleton('bar'))

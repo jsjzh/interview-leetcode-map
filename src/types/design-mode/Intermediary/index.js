@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-26 09:06:18
- * @LastEditTime: 2019-03-26 09:32:29
+ * @LastEditTime: 2019-03-26 09:50:35
  * @Description: 中介者模式
  *
  * 通过一个中介者对象，其他所有的相关对象都通过该中介者对象来通信，而不是相互引用
@@ -18,7 +18,7 @@ let colorSelect = document.getElementById('colorSelect')
 let memorySelect = document.getElementById('memorySelect')
 let numSelect = document.getElementById('numSelect')
 
-export const Intermediary = (function() {
+const Intermediary = (function() {
   return {
     change(target) {
       switch (target.id) {

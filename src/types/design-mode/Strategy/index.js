@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-25 22:03:55
- * @LastEditTime: 2019-03-26 09:32:14
+ * @LastEditTime: 2019-03-26 09:50:26
  * @Description: 策略模式
  * 定义一系列的算法，把他们一个个封装起来，并且使他们可以相互替换
  * 目的是将算法的使用和算法的实现分开来
@@ -26,7 +26,7 @@ let strategys = {
 }
 
 // 环境类
-export function strategy(type, num) {
+function strategy(type, num) {
   return strategys[type](num)
 }
 

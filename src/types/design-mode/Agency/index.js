@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-25 22:17:07
- * @LastEditTime: 2019-03-26 09:32:20
+ * @LastEditTime: 2019-03-26 09:50:43
  * @Description: 代理模式
  * 为一个对象提供一个代用品或占位符，以便控制对它的访问
  *
@@ -13,7 +13,7 @@
  * 再把完成的图片加载到 img 标签里面
  */
 
-export const setImg = (function() {
+const setImg = (function() {
   return {
     setSrc(targetEl, src) {
       targetEl.src = src
@@ -21,7 +21,7 @@ export const setImg = (function() {
   }
 })()
 
-export const setImgAgency = (function() {
+const setImgAgency = (function() {
   return {
     setSrc(targetEl, src) {
       let img = new Image()
