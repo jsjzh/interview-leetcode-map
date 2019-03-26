@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-26 09:19:10
- * @LastEditTime: 2019-03-26 10:54:30
+ * @LastEditTime: 2019-03-26 11:47:24
  * @Description: 装饰者模式
  *
  * 在不改变对象自身的基础上，在程序运行期间给对象动态地添加方法
@@ -17,7 +17,7 @@
 Function.prototype.before = function(beforeFn) {
   let self = this
   return function() {
-    beforeFn.apply(this, arguments)
+    if (!beforeFn.apply(this, arguments)) return false
     return self.apply(this, arguments)
   }
 }
@@ -25,24 +25,22 @@ Function.prototype.before = function(beforeFn) {
 Function.prototype.after = function(afterFn) {
   let self = this
   return function() {
-    let ret = self.apply(this, arguments)
-    afterFn.apply(this, arguments)
-    return ret
+    let res = self.apply(this, arguments)
+    if (res) return res
+    return afterFn.apply(this, arguments)
   }
 }
 
-// 例：如何在不引入其他变量的情况下增加 window.onload 之后的函数
-window.onload = function() {
-  console.log('old load')
-}
-window.onload = (window.onload || function() {}).before(function() {
-  console.log('new before load')
-})
-window.onload = (window.onload || function() {}).after(function() {
-  console.log('new after load')
-})
+/**
+ * 例：如何在不引入其他变量的情况下增加 window.onload 之后的函数
+ */
+// window.onload = function() { console.log('old load') }
+// window.onload = (window.onload || function() {}).before(function() { console.log('new before load') })
+// window.onload = (window.onload || function() {}).after(function() { console.log('new after load') })
 
-// 例：如何给函数添加统计代码（或其他任何你想得到的东西）
+/**
+ * 例：如何给函数添加统计代码（或其他任何你想得到的东西）
+ */
 function foo() {
   for (let index = 0; index < 1000; index++) {
     console.log(index)
@@ -65,7 +63,9 @@ function logTime(func, funcName) {
 foo = logTime(foo, 'foo')
 // console.log(foo())
 
-// 例：分离表单请求和验证
+/**
+ * 例：分离表单请求和验证
+ */
 let validataRules = {
   type(value) {
     return typeof value === 'string'
@@ -77,7 +77,6 @@ let validataRules = {
     return value.length < 10
   }
 }
-
 function validata() {
   for (const key in validataRules) {
     if (validataRules.hasOwnProperty(key)) {
@@ -87,14 +86,30 @@ function validata() {
       }
     }
   }
+  return true
 }
-
 function sendData(value) {
-  if (validata(value) === false) {
-    console.log('you can not send data')
-    return
-  }
-  console.log('you can send data')
+  console.log('you can send data: ' + value)
 }
-sendData('some string data')
-sendData('string')
+sendData = sendData.before(validata)
+// sendData('demo')
+
+/**
+ * 例：职责链模式
+ * 对于 plugin html5 flash 是一个逐渐往下需求的过程
+ * 若有 plugin 则使用 plugin 后面依次
+ */
+let getPlugin = function() {
+  return { type: 'plugin' }
+  return null
+}
+let getHtml5 = function() {
+  return { type: 'html5' }
+  return null
+}
+let getFlash = function() {
+  return { type: 'flash' }
+  return null
+}
+let getUpload = getPlugin.after(getHtml5).after(getFlash)
+// console.log(getUpload())
