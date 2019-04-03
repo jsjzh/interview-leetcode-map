@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-20 21:19:51
- * @LastEditTime: 2019-03-25 16:45:01
+ * @LastEditTime: 2019-04-03 15:48:39
  * @Description: 这里会收集平时看到的面试题，并附上自己的解答，基本上都会补充上来源和说明还有示例
  */
 
@@ -203,6 +203,29 @@ function createBlock(n) {
   return div
 }
 // document.documentElement.appendChild(createBlock(5))
+
+/**
+ * 来源：微信群
+ *
+ * 需求：
+ * 两个人正在玩猜数游戏，A 心里想两个不相等的正数，然后把两个正数的和 Y 告诉 B
+ * A 声称心里想的两个数都不大于 X，让 B 猜这两个数是多少
+ * B 每猜一次，A 都会告诉他猜对还是猜错了，游戏直到猜对为止
+ * 为了加大难度，A 可能会误报 X 的大小，如果 B 判断出 X 是错误的，就可以直接获得答案
+ * 最坏的情况下，B 需要猜多少次才能猜到答案？
+ *
+ * X1 + X2 = Y
+ * X1 <= X && X2 <= X
+ * X1 !== X2
+ * X1,X2 >= 1 && Y <= 10^14
+ *
+ * @param {Number} x 两个数不大于的数
+ * @param {Number} y 两个数之和
+ */
+function guessNumber(x, y) {
+  if (x < y / 2) return 1
+  return y % 2 === 0 ? y / 2 : (y + 1) / 2
+}
 
 /**
  * 实现各种排序算法

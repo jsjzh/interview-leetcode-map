@@ -10,4 +10,4 @@ import './init'
 // ------------- interview -------------
 // import 'interview'
 // import 'interview/promise'
-import 'types/design-mode'
+// import 'types/design-mode'
