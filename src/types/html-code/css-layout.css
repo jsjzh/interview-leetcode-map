@@ -1,3 +1,51 @@
+:root {
+  --side-one: #2196f3;
+  --content: #03a9f4;
+  --side-two: #00bcd4;
+}
+
 .css-layout {
-  background-color: red;
+}
+
+.css-layout .layout-box {
+  height: 600px;
+  width: 100%;
+  overflow: auto;
+  margin: 2rem 0;
+}
+
+.single-row-layout .header {
+  margin: 0 auto;
+  height: 100px;
+  line-height: 100px;
+  font-size: 1.5rem;
+  background-color: var(--side-one);
+}
+.single-row-layout .content {
+  margin: 0 auto;
+  height: 400px;
+  background-color: var(--content);
+}
+.single-row-layout .footer {
+  margin: 0 auto;
+  height: 100px;
+  background-color: var(--side-two);
+}
+
+.two-column-layout .parent {
+  overflow: hidden;
+  zoom: 1;
+  height: 100px;
+}
+
+.two-column-layout .left {
+  float: left;
+  margin-right: 20px;
+  height: 400px;
+}
+
+.two-column-layout .right {
+  overflow: hidden;
+  zoom: 1;
+  height: 100px;
 }
