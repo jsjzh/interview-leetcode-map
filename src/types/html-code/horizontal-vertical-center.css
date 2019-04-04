@@ -1,38 +1,38 @@
-.center-container {
+.horizontal-vertical-center {
   width: 100%;
   height: 100%;
 }
 
-.center-container .box {
+.horizontal-vertical-center .box {
   border-radius: 5px;
   box-shadow: 1px 1px 10px #666;
 }
 
-.center-container .title {
+.horizontal-vertical-center .title {
   font-size: 2rem;
   font-weight: 600;
   color: #666;
 }
 
-.center-container .horizontal-center-item {
+.horizontal-vertical-center .horizontal-center-item {
   margin: 2rem;
   padding: 2rem;
   background-color: #666;
   color: #eee;
 }
 
-.center-container .center-inline {
+.horizontal-vertical-center .center-inline {
   background-color: #464646;
   padding: 1rem;
 }
 
-.center-container .center-block {
+.horizontal-vertical-center .center-block {
   width: 500px;
   background-color: #464646;
   padding: 1rem;
 }
 
-.center-container .vertical-center-item {
+.horizontal-vertical-center .vertical-center-item {
   height: 500px;
   margin: 2rem;
   padding: 2rem;
@@ -40,7 +40,7 @@
   color: #eee;
 }
 
-.center-container .pseudo-parent::after {
+.horizontal-vertical-center .pseudo-parent::after {
   content: '';
   height: 100%;
   display: inline-block;

@@ -3,16 +3,17 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-22 13:34:44
- * @LastEditTime: 2019-03-22 15:54:13
+ * @LastEditTime: 2019-04-04 14:27:20
  * @Description: 页面初始化
  */
 // parcel 独特的批量引入方式，引入为一个对象，key 为文件名，value 为其对应的 html 片段
 import pages from '../types/html-code/*.html'
 import '../types/html-code/*.css'
+
 const app = document.getElementById('app')
 const header = document.getElementById('header')
 
-const pageData = [{ to: 'horizontal-vertical-center', title: '各种居中' }]
+const pageData = [{ to: 'horizontal-vertical-center', title: '各种居中' }, { to: 'css-layout', title: '各种布局' }]
 
 let ul = document.createElement('ul')
 pageData.forEach(item => {
