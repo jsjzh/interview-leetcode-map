@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-20 21:19:51
- * @LastEditTime: 2019-04-03 15:48:39
+ * @LastEditTime: 2019-04-15 10:22:24
  * @Description: 这里会收集平时看到的面试题，并附上自己的解答，基本上都会补充上来源和说明还有示例
  */
 
@@ -226,6 +226,28 @@ function guessNumber(x, y) {
   if (x < y / 2) return 1
   return y % 2 === 0 ? y / 2 : (y + 1) / 2
 }
+
+/**
+ * 来源：微信群
+ *
+ * 需求：
+ * 怼给定的字符串进行排序，字符串中国呢每个单词都包含一个数字，此数字是单词再结果中应具有的位置
+ * 数字可以是 1-9，因此 1 是第一个单词（不是 0）
+ * 如果输入为空，则返回空字符串，输入的 string 中的单词只包含有效的连续数字
+ * 例子：
+ * "is2 Thi1s T4est 3a" ===> "Thi1s is2 3a T4est"
+ * "4of Fo1r pe6ople g3ood th5e the2" ===> "Fo1r the2 g3ood 4of th5e pe6ople"
+ * "" ===> ""
+ * @param {String} str
+ */
+function sortStringByNumber(str) {
+  if (!str) return ''
+  return str
+    .split(' ')
+    .sort((a, b) => a.match(/[1-9]/).join('') - b.match(/\d/).join(''))
+    .join(' ')
+}
+// console.log(sortStringByNumber('fo11r'))
 
 /**
  * 实现各种排序算法
