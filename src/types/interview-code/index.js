@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-20 21:19:51
- * @LastEditTime: 2019-04-15 10:22:24
+ * @LastEditTime: 2019-05-10 09:29:05
  * @Description: 这里会收集平时看到的面试题，并附上自己的解答，基本上都会补充上来源和说明还有示例
  */
 
@@ -250,6 +250,66 @@ function sortStringByNumber(str) {
 // console.log(sortStringByNumber('fo11r'))
 
 /**
+ *来源：微信群
+ *
+ * 需求：
+ * 方法内传入两个参数，如果第二个参数是第一个参数重新排列顺序而生成的则返回 true
+ * @param {String} test
+ * @param {String} original
+ */
+function isAnagram(test, original) {
+  if (test.length !== original.length) return false
+  const trans = str =>
+    str
+      .toLowerCase()
+      .split('')
+      .sort()
+      .join('')
+  return trans(test) === trans(original)
+}
+// console.log(isAnagram('foefet', 'toffee'))
+// console.log(isAnagram('Buckethead', 'DeathCubeK'))
+
+/**
+ * 来源：微信群
+ *
+ * 需求：
+ * 实现一个方法，从数组中寻找某个值作为分割的界点，使得该值左右两边的数相加相等
+ * @param {Array} arr
+ *
+ * 如下是利用高级函数的版本，如果碰到数组长度几千几万的性能会差很多
+ */
+function findEvenIndex(arr) {
+  let sum = (pre, curr) => pre + curr
+  for (let index = 1; index < arr.length; index++) {
+    let leftTotal = arr.slice(0, index).reduce(sum, 0)
+    let rightTotal = arr.slice(index + 1).reduce(sum, 0)
+    if (leftTotal === rightTotal) return index
+  }
+  return false
+}
+// console.log(findEvenIndex([1, 2, 3, 4, 3, 2, 1]))
+// console.log(findEvenIndex([1, 100, 50, -51, 1, 1]))
+
+/**
+ * @param {Array} arr
+ * 利用动态规划备忘录法来做
+ */
+function findEvenIndexPro(arr) {
+  let cacheLeft = 0
+  let cacheRight = 0
+  let sum = (pre, curr) => pre + curr
+  for (let index = 1; index < arr.length; index++) {
+    let leftTotal = cacheLeft ? (cacheLeft += arr[index - 1]) : (cacheLeft += arr.slice(0, index).reduce(sum, 0))
+    let rightTotal = cacheRight ? (cacheRight -= arr[index]) : (cacheRight += arr.slice(index + 1).reduce(sum, 0))
+    if (leftTotal === rightTotal) return index
+  }
+  return false
+}
+// console.log(findEvenIndexPro([1, 2, 3, 4, 3, 2, 1]))
+// console.log(findEvenIndexPro([1, 100, 50, -51, 1, 1]))
+
+/**
  * 实现各种排序算法
  * 除了特殊说明，默认都是从小到大排序
  */
@@ -284,6 +344,7 @@ function bubbleSort(arr) {
   return arr
 }
 // console.log(bubbleSort(arr))
+
 /**
  * TODO
  * 冒泡排序改进版
