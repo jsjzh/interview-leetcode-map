@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-20 21:19:51
- * @LastEditTime: 2019-05-10 09:29:05
+ * @LastEditTime: 2019-05-10 10:52:01
  * @Description: 这里会收集平时看到的面试题，并附上自己的解答，基本上都会补充上来源和说明还有示例
  */
 
@@ -296,13 +296,13 @@ function findEvenIndex(arr) {
  * 利用动态规划备忘录法来做
  */
 function findEvenIndexPro(arr) {
-  let cacheLeft = 0
-  let cacheRight = 0
   let sum = (pre, curr) => pre + curr
+  let cacheLeft = arr[0]
+  let cacheRight = arr.reduce(sum, 0) - arr[0] - arr[1]
   for (let index = 1; index < arr.length; index++) {
-    let leftTotal = cacheLeft ? (cacheLeft += arr[index - 1]) : (cacheLeft += arr.slice(0, index).reduce(sum, 0))
-    let rightTotal = cacheRight ? (cacheRight -= arr[index]) : (cacheRight += arr.slice(index + 1).reduce(sum, 0))
-    if (leftTotal === rightTotal) return index
+    if (cacheLeft === cacheRight) return index
+    cacheLeft += arr[index]
+    cacheRight -= arr[index + 1]
   }
   return false
 }
