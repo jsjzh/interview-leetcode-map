@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-08 09:45:09
- * @LastEditTime: 2019-03-25 09:44:21
+ * @LastEditTime: 2019-05-13 15:42:22
  * @Description
  *  果然每天的生活都需要点算法题调剂调剂，每天都是重复的业务代码太无趣了，我渴望一点需要动脑子的东西，遂就有了这个小项目
  *  写上来的代码都是可以通过 leedcode 的测试的，只不过嘛，用时和内存消耗就没有那么完美了，但我会对不满意的题目重写一遍，开拓新的思路，撒花
@@ -829,3 +829,47 @@ let levelOrderBottom = function(root) {
 
 // console.log(new TestTreeNode([3, 9, 20, null, null, 15, 7]))
 // console.log(levelOrderBottom(new TestTreeNode([3, 9, 20, null, null, 15, 7])))
+
+/**
+ * CLEAR 简单版
+ * 给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。
+ * 输入 5
+ * 输出
+ * [
+ *       [1],
+ *      [1,1],
+ *     [1,2,1],
+ *    [1,3,3,1],
+ *   [1,4,6,4,1]
+ * ]
+ * @param {Number} numRows
+ * @return {Number[][]}
+ */
+let generate = function(numRows) {
+  if (numRows === 0) return []
+  if (numRows === 1) return [[1]]
+  if (numRows === 2) return [[1], [1, 1]]
+  let arr = [[1], [1, 1]]
+  for (let index = 2; index < numRows; index++) {
+    const count = index + 1
+    arr[index] = new Array(count).fill(null)
+    for (let ind = 0; ind < arr[index].length; ind++) {
+      if (ind === 0 || ind === arr[index].length - 1) {
+        arr[index][ind] = 1
+      } else {
+        arr[index][ind] = arr[index - 1][ind - 1] + arr[index - 1][ind]
+      }
+    }
+  }
+  return arr
+}
+
+// console.log(generate(10))
+
+/**
+ * TODO
+ * 给定一个非负索引 k，其中 k ≤ 33，返回杨辉三角的第 k 行。
+ * @param {Number} rowIndex
+ * @return {Number[]}
+ */
+let getRow = function(rowIndex) {}
