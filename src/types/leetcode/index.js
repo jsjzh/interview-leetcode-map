@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-08 09:45:09
- * @LastEditTime: 2019-05-13 15:42:22
+ * @LastEditTime: 2019-05-20 11:48:29
  * @Description
  *  果然每天的生活都需要点算法题调剂调剂，每天都是重复的业务代码太无趣了，我渴望一点需要动脑子的东西，遂就有了这个小项目
  *  写上来的代码都是可以通过 leedcode 的测试的，只不过嘛，用时和内存消耗就没有那么完美了，但我会对不满意的题目重写一遍，开拓新的思路，撒花
@@ -22,11 +22,8 @@ let twoSum = function(nums, target) {
     const number = nums[index]
     let other = target - number
     let _index = nums.indexOf(other)
-    if (_index !== -1 && _index !== index) {
-      return [index, _index]
-    } else {
-      continue
-    }
+    if (_index !== -1 && _index !== index) return [index, _index]
+    else continue
   }
   return []
 }
@@ -873,3 +870,32 @@ let generate = function(numRows) {
  * @return {Number[]}
  */
 let getRow = function(rowIndex) {}
+// console.log(getRow(10))
+
+/**
+ * TODO
+ * 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
+ * 如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。
+ * 注意你不能在买入股票前卖出股票。
+ *
+ * 输入 [7,1,5,3,6,4]
+ * 输出 5
+ * 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
+ * 注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格。
+ *
+ * 输入 [7,6,4,3,1]
+ * 输出 0
+ * 在这种情况下, 没有交易完成, 所以最大利润为 0。
+ * @param {Number[]} prices
+ * @return {Number}
+ */
+let maxProfit = function(prices) {
+  let max = 0
+  for (let i = prices.length - 1; i >= 0; i--) {
+    for (let j = i - 1; j >= 0; j--) {
+      max = Math.max(max, prices[i] - prices[j])
+    }
+  }
+  return max
+}
+// console.log(maxProfit([7, 6, 4, 3, 1]))
