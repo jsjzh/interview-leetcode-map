@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-20 21:19:51
- * @LastEditTime: 2019-05-10 10:52:01
+ * @LastEditTime: 2019-05-21 23:07:56
  * @Description: 这里会收集平时看到的面试题，并附上自己的解答，基本上都会补充上来源和说明还有示例
  */
 
@@ -308,6 +308,27 @@ function findEvenIndexPro(arr) {
 }
 // console.log(findEvenIndexPro([1, 2, 3, 4, 3, 2, 1]))
 // console.log(findEvenIndexPro([1, 100, 50, -51, 1, 1]))
+
+/**
+ * 来源：微信群
+ *
+ * 需求：
+ * 给定连续奇数的三角形，据索引计算改行的和
+ * 1        01       = 1
+ * 2      03 05      = 8
+ * 3    07 09 11     = 27
+ * 4  13 15 17 19    = 64
+ * 5 21 23 25 27 29  = 125
+ * @param {Number} nums
+ */
+function rowSumOddNumbers(nums) {
+  if (nums < 0) return 0
+  const cache = nums
+  let start = 1
+  while (nums--) start += nums
+  return (start * 2 - 1) * cache + 2 * (start - 1)
+}
+// console.log(rowSumOddNumbers(5))
 
 /**
  * 实现各种排序算法
