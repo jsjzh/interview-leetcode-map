@@ -3,7 +3,7 @@
  * @Email: kimimi_king@163.com
  * @LastEditors: jsjzh
  * @Date: 2019-03-20 21:19:51
- * @LastEditTime: 2019-05-21 23:07:56
+ * @LastEditTime: 2019-05-29 15:25:17
  * @Description: 这里会收集平时看到的面试题，并附上自己的解答，基本上都会补充上来源和说明还有示例
  */
 
@@ -329,6 +329,26 @@ function rowSumOddNumbers(nums) {
   return (start * 2 - 1) * cache + 2 * (start - 1)
 }
 // console.log(rowSumOddNumbers(5))
+
+/**
+ * TODO
+ * 来源：微信群
+ *
+ * 需求：
+ * 有一个小偷，打算盗窃某圆形广场上的沿街商铺，意味着第一间和最后一间也是相连的，如果每两间相邻的商铺之间都被偷窃则会引发警报。
+ * 给定一个非负整数数组，表示每间商铺中存放的金额，请问在不触发报警的前提下，一个晚上最多能偷多少。
+ * 例子：
+ * 输入 [2,3,2]
+ * 输出 3
+ * 因为房间 1、3 相邻，所以偷房间 2 价值最高
+ * 输入 [1,2,3,1]
+ * 输出 4
+ * 因为从房间 1、3 偷价值最高
+ * @param {Array[Number]} nums
+ */
+function steal(nums) {}
+
+console.log(steal([2, 1, 1, 100, 1, 1, 1]))
 
 /**
  * 实现各种排序算法
