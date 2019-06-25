@@ -8,6 +8,9 @@ import './init'
 // ------------- leetcode -------------
 // import 'leetcode'
 // ------------- interview -------------
-import 'interview'
+// import 'interview'
 // import 'interview/promise'
 // import 'types/design-mode'
+// ------------- init-frontend -------------
+import "./types/init-frontend"
+
