@@ -12,16 +12,16 @@
  *
  * delete
  * 用于删除某一对象的属性，注意，不管删除的属性是否存在与该对象上，都会返回 true，只有一种情况下回返回 false，那就是该属性存在，且不得删除
- * let foo = { a: 123 }
+ * var foo = { a: 123 }
  * delete foo.a // true
  * delete foo.b // true
- * let bar = Object.defineProperty({}, "a", { value: 123, configurable: false })
+ * var bar = Object.defineProperty({}, "a", { value: 123, configurable: false })
  * delete bar.a // false
  * 另外，有一点需要注意的是，delete 只能删除对象本身的属性，无法删除继承的属性
  *
  * in
  * 用于判断属性是否存在，in 的问题就是无法判断属性是否是对象自身的，这个时候可以使用对象的 hasOwnProperty 方法判断
- *  let foo = { a: 123 }
+ *  var foo = { a: 123 }
  *  if ("a" in foo) {
  *    console.log(foo.hasOwnProperty("toString")) // false
  *    console.log(foo.hasOwnProperty("a")) // true
@@ -30,7 +30,7 @@
  * for...in
  * 用来遍历一个对象的全部属性（可遍历的，enumerable），它不仅遍历对象自身的属性，还遍历继承的属性
  * 一般情况下都只想遍历对象自身的属性，所以使用 for...in 的时候，一般会结合 hasOwnProperty 方法
- *  for (let key in foo) {
+ *  for (var key in foo) {
  *    if (foo.hasOwnProperty(key)){
  *      console.log(key)
  *    }
@@ -43,7 +43,7 @@
  * 作用是同时操作一个对象的多个属性
  * 注意，如果 with 区块内部有变量的赋值操作，必须是当前对象已经存在的属性，否则会创建一个当前作用域的全局变量
  */
-// let foo = { a: 123, b: 321 }
+// var foo = { a: 123, b: 321 }
 // with (foo) {
 //   a = 321
 //   b = 123

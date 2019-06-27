@@ -5,8 +5,8 @@
  * 标签通常与 break 和 continue 语句配合使用，跳出特定的循环
  */
 
-// foo: for (let i = 0; i < 3; i++) {
-//   bar: for (let j = 0; j < 3; j++) {
+// foo: for (var i = 0; i < 3; i++) {
+//   bar: for (var j = 0; j < 3; j++) {
 //     if (i === j) continue foo
 //     console.log(`i = ${i}, j = ${j}`)
 //   }
@@ -15,8 +15,8 @@
 // i = 2, j = 0
 // i = 2, j = 1
 
-// foo: for (let i = 0; i < 3; i++) {
-//   bar: for (let j = 0; j < 3; j++) {
+// foo: for (var i = 0; i < 3; i++) {
+//   bar: for (var j = 0; j < 3; j++) {
 //     if (i === j) continue bar
 //     console.log(`i = ${i}, j = ${j}`)
 //   }

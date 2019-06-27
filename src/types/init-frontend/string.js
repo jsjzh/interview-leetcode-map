@@ -1,7 +1,7 @@
 /**
  * 输出多行字符串，利用多行注释的变通方法
  */
-let multiLine = function() {
+var multiLine = function() {
   /*
   line 1
   line 2
