@@ -11,6 +11,6 @@ import './init'
 // import 'interview'
 // import 'interview/promise'
 // import 'types/design-mode'
-// ------------- init-frontend -------------
-import "./types/init-frontend"
+// ------------- frontend-again -------------
+import "./types/frontend-again"
 
