@@ -63,5 +63,14 @@
  * 类数组对象
  *
  * 如果一个对象的所有键名都是正整数或零，并且有 length 属性，那么这个对象就称为 "类数组对象"（array-like object）
- * 
+ * 根本特征：具有 length 属性
+ *
+ * 常见的类数组对象
+ * arguments、doms、字符串
+ *
+ * 如何让类数组对象调用数组的方法
+ *  将类数组对象转为数组
+ *    var arr = Array.prototype.slice.call(arrayLike)
+ *  利用 call()，这种方法比直接使用数组原生的 forEach 慢，所以还是用第一种方法更好
+ *    Array.prototype.forEach.call(arrayLike, function (value, index) { console.log(value, index) } )
  */

@@ -76,9 +76,9 @@
  *  parseInt("+a12") // NaN
  *  parseInt(".3") // NaN
  * 根据上面的特性，会有一些意外的结果
- *  parseInt(0x11, 36) // 43 === parseInt(String(0x11, 36)) === parseInt("17", 36)
- *  parseInt(0x11, 2) // 1 === parseInt(String(0x11, 2)) === parseInt("17", 2)
- *  parseInt(011, 2) // NaN === parseInt(String(011), 2) === parseInt(String(9), 2)
+ *  parseInt(0x11, 36) // 43 ===> parseInt(String(0x11, 36)) ===> parseInt("17", 36)
+ *  parseInt(0x11, 2) // 1 ===> parseInt(String(0x11, 2)) ===> parseInt("17", 2)
+ *  parseInt(011, 2) // NaN ===> parseInt(String(011), 2) ===> parseInt(String(9), 2)
  *  parseInt("011", 2) // 3
  * 如果碰到会自动转为科学计数法的数字，会将科学计数法的表示方法视为字符串，会有一些奇怪的结果
  *  parseInt(0.0000008) // 8
@@ -116,13 +116,13 @@
  * isNaN()
  * 可以用来判断一个值是否为 NaN
  * 但是，该方法只对数值有效，如果传入其他值，会先试图将其转为数值，比如传入字符串的时候，字符串会先被转成 NaN，然后经行判断
- *  isNaN("test") // true === inNaN(Number("test"))
- *  isNaN({}) // true === isNaN(Number({}))
- *  isNaN(["xyz"]) // true === isNaN(Number(["xyz"]))
+ *  isNaN("test") // true ===> inNaN(Number("test"))
+ *  isNaN({}) // true ===> isNaN(Number({}))
+ *  isNaN(["xyz"]) // true ===> isNaN(Number(["xyz"]))
  * 还有一些特殊情况，对于空数组和只有一个数值成员的数组，会返回 false，之所以会这样，是因为被 Number() 转为了数值
  *  isNaN([]) // false
  *  isNaN([123]) // false
- *  usNaN(["123"]) // true
+ *  isNaN(["123"]) // true
  * 判断 NaN 更可靠的方法，是利用他的特性，NaN 是唯一一个不等于自身的值
  *  function myIsNaN(value) { return value !== value }
  *

@@ -43,20 +43,20 @@
  * 作用是同时操作一个对象的多个属性
  * 注意，如果 with 区块内部有变量的赋值操作，必须是当前对象已经存在的属性，否则会创建一个当前作用域的全局变量
  */
-// var foo = { a: 123, b: 321 }
-// with (foo) {
-//   a = 321
-//   b = 123
-// }
-// // ===
-// foo.a = 321
-// foo.b = 123
-// with (document.links[0]) {
-//   console.log(href)
-//   console.log(title)
-//   console.log(style)
-// }
-// // ===
-// console.log(document.links[0].href)
-// console.log(document.links[0].title)
-// console.log(document.links[0].style)
+var foo = { a: 123, b: 321 }
+with (foo) {
+  a = 321
+  b = 123
+}
+// ===
+foo.a = 321
+foo.b = 123
+with (document.links[0]) {
+  console.log(href)
+  console.log(title)
+  console.log(style)
+}
+// ===
+console.log(document.links[0].href)
+console.log(document.links[0].title)
+console.log(document.links[0].style)
