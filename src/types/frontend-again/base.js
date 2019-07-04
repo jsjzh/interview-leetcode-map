@@ -27,3 +27,42 @@
 // i = 1, j = 2
 // i = 2, j = 0
 // i = 2, j = 1
+
+/**
+ * switch...case 结构
+ *
+ * 建议改为对象结构来执行
+ */
+
+function doAction(action) {
+  switch (action) {
+    case 'hack':
+      return 'hack'
+    case 'slash':
+      return 'slash'
+    case 'run':
+      return 'run'
+    default:
+      throw new Error('Invalid action.')
+  }
+}
+
+function doAction(action) {
+  var actions = {
+    hack: function() {
+      return 'hack'
+    },
+    slash: function() {
+      return 'slash'
+    },
+    run: function() {
+      return 'run'
+    }
+  }
+
+  if (typeof actions[action] !== 'function') {
+    throw new Error('Invalid action.')
+  }
+
+  return actions[action]()
+}

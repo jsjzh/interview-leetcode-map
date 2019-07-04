@@ -1,3 +1,4 @@
+// TODO https://wangdoc.com/javascript/types/string.html
 /**
  * 输出多行字符串，利用多行注释的变通方法
  */

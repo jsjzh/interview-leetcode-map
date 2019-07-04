@@ -40,7 +40,7 @@
  *  对象类型，先转为原始类型的值再比较，先调用 valueOf()，如果返回的还是对象，再调用 toString()，Date 比较特别，是直接调用 toString()
  *    var foo = [2]
  *    foo > "11" // true ===> [2].valueOf().toString() > "11" ===> "2" > "11"
- *    foo.valueOf = function () { return "1" }
+ *    foo.valueOf = function() { return "1" }
  *    foo > "11" // false ===> [2].valueOf() > "11" ===> "1" > "11"
  *    [2] > [1] // true ===> [2].valueOf().toString() > [1].valueOf().toString() ===> "2" > "1"
  *    [2] > [11] // true ===> [2].valueOf().toString() > [11].valueOf().toString() ===> "2" > "11"

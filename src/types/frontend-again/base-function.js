@@ -1,11 +1,11 @@
 /**
  * 函数的声明
- * function foo () {}
+ * function foo() {}
  *
  * 函数表达式
- * var foo = function () {}
+ * var foo = function() {}
  * 如果后面加上函数名，该函数名只在函数体内部有效，外部无效
- *  var bar = function x () { console.log(typeof x) // function }
+ *  var bar = function x() { console.log(typeof x) // function }
  *  console.log(x) // x is not defined
  */
 
@@ -13,9 +13,9 @@
  * 函数的重复声明
  *
  * 值得注意的是，由于函数名的提升，前一次声明在任何时候都是无效的
- * function foo () { console.log(1) }
+ * function foo() { console.log(1) }
  * foo() // 2
- * function foo () { console.log(2) }
+ * function foo() { console.log(2) }
  * foo() // 2
  */
 
@@ -24,14 +24,14 @@
  *
  * 如果采用函数声明式来声明函数，整个函数会像变量声明一样被提升到代码头部
  *  foo() // 2
- *  function foo () { console.log(2) }
+ *  function foo() { console.log(2) }
  * 但如果采用函数表达式就会出错
  *  foo() // undefined is not a function
- *  var foo = function () { console.log(2) }
+ *  var foo = function() { console.log(2) }
  *  会发生以上的结果是因为变量的提升，使用了 var 之后，foo 会被提升到顶部
  * 如果同时采用函数的声明和函数表达式来声明同一个函数，最后总是会采用函数表达式的函数
- *  var foo = function () { console.log(1) }
- *  function foo () { console.log(2) }
+ *  var foo = function() { console.log(1) }
+ *  function foo() { console.log(2) }
  *  foo() // 1
  */
 
@@ -42,9 +42,9 @@
  * 返回函数名称
  *  function f1() {}
  *  f1.name // f1
- *  var f2 = function () {}
+ *  var f2 = function() {}
  *  f2.name // f2
- *  var f3 = function foo () {}
+ *  var f3 = function foo() {}
  *  f3.name // foo
  *  注意，上面的例子真正的函数名还是 f3，foo 只能在函数体内部使用
  *
@@ -56,7 +56,7 @@
  *
  * toString()
  * 返回一个字符串，内容是函数的源码，包括注释也可以返回
- * 对于原生函数，则回返回 function () {[native code]}
+ * 对于原生函数，则回返回 function() {[native code]}
  */
 
 /**
@@ -67,11 +67,11 @@
  *  全局作用域：变量在整个程序中一直存在，所有地方都可以读取
  *  函数作用域：变量只在函数内部存在
  *  var foo = 1
- *  function f () { console.log(v) }
+ *  function f() { console.log(v) }
  *  f() // 1
  *
  *  var foo = 1
- *  function f () { var foo = 2; console.log(foo) }
+ *  function f() { var foo = 2; console.log(foo) }
  *  f() // 2
  *  foo // 1
  *
@@ -92,17 +92,17 @@
  * 函数本身也是一个值，也有自己的作用域，它的作用域与变量一样，就是其声明时所在的作用域，与其运行时所在的作用域无关
  *
  * var a = 1
- * var x = function () { console.log(a) }
- * function f () { var a = 2; x() }
+ * var x = function() { console.log(a) }
+ * function f() { var a = 2; x() }
  * f() // 1
  *
- * var x = function () { console.log(a) }
+ * var x = function() { console.log(a) }
  * function y(f) { var a = 2; f() }
  * y(x) // a is not defined
  *
- * function foo () {
+ * function foo() {
  *  var x = 1;
- *  function bar () {
+ *  function bar() {
  *    console.log(x)
  *  }
  *  return bar
@@ -172,9 +172,9 @@
  * 闭包
  *
  * 闭包简单的理解就是 "定义在一个函数内部的函数"
- * function f1 () {
+ * function f1() {
  *  var n = 1
- *  function f2 () {
+ *  function f2() {
  *    console.log(n)
  *  }
  *  return f2
@@ -187,17 +187,17 @@
 /**
  * 立即调用的函数表达式（IIFE）
  *
- * var i = function () { //code }();
- * true && function () { //code }();
- * 0, function () { //code }();
- * !function () { //code }();
- * ~function () { //code }();
- * -function () { //code }();
- * +function () { //code }();
+ * var i = function() { //code }();
+ * true && function() { //code }();
+ * 0, function() { //code }();
+ * !function() { //code }();
+ * ~function() { //code }();
+ * -function() { //code }();
+ * +function() { //code }();
  * 以上这些都可以实现函数立即调用，任何让解释器以表达式来处理函数定义的方法，都可以成为 IIFE
  *
  * 立即调用的函数表达式结合闭包可以避免污染全局变量
- * (function () {
+ * (function() {
  *  var temp = 1
  *  f1(temp)
  *  f2(temp)
@@ -228,7 +228,7 @@
  * 如上这种情况，引擎在静态代码分析的阶段，无法分辨执行的是 eval，就无法进行代码优化
  * 为了保证别名不影响优化，JavaScript 的标准规定，凡是使用别名执行 eval，eval 内部一律是全局作用域
  * var a = 1
- * function f () {
+ * function f() {
  *  var a = 2
  *  var e = eval
  *  e("console.log(a)")

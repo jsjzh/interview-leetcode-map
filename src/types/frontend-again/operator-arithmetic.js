@@ -40,17 +40,17 @@
  * var obj = { P: 1 }
  * obj.valueOf().toString()
  *
- * var obj = { valueOf: function () { return 1 } }
+ * var obj = { valueOf: function() { return 1 } }
  * obj + 1 // 2
  * 上面的例子，定义 obj 对象的 valueOf() 返回 1，并且由于 valueOf() 直接返回一个原始类型的值，所以不再调用 toString()
  *
- * var obj = { toString: function () { return "hello" } }
+ * var obj = { toString: function() { return "hello" } }
  * obj + 2 // "hello2"
  *
  * 这里有一个特例，如果运算子是一个 Date 对象的实例，那么会优先执行 toString()
  * var obj = new Date()
- * obj.valueOf = function () { return 1 }
- * obj.toString = function () { return "hello" }
+ * obj.valueOf = function() { return 1 }
+ * obj.toString = function() { return "hello" }
  * obj + 3 // "hello3"
  */
 
@@ -58,7 +58,7 @@
  * 余数运算符
  *
  * 返回前一个运算子被后一个运算子除所得的余数，需要注意的是，运算结果的正负号由第一个运算子的正负号决定，所以为了得到负数的正确余数值，可以先用绝对值函数
- * function () { return Math.abs(n % 2) === 1 }
+ * function() { return Math.abs(n % 2) === 1 }
  */
 
 /**

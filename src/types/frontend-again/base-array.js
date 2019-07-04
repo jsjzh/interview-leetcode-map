@@ -49,12 +49,12 @@
  * 值得注意的是，数组的某个位置是空位，和某个位置是 undefined 是不同的，即使访问空位元素会返回 undefined
  * 如果是空位，forEach、for...in、Object.keys 遍历时，空位都会被跳过
  * var arr = [, , ,]
- * arr.forEach(function (value) { console.log(value) }) // 不产生任何输出
+ * arr.forEach(function(value) { console.log(value) }) // 不产生任何输出
  * for (var i in arr) { console.log(i) } // 不产生任何输出
  * Object.keys(arr) // []
  * 如果是 undefined，则不会跳过
  * var arr = [undefined, undefined, undefined]
- * arr.forEach(function (value) { console.log(value) }) // undefined * 3
+ * arr.forEach(function(value) { console.log(value) }) // undefined * 3
  * for (var i in arr) { console.log(i) } // "0" "1" "2"
  * Object.keys(arr) // ["0", "1", "2"]
  */
@@ -72,5 +72,5 @@
  *  将类数组对象转为数组
  *    var arr = Array.prototype.slice.call(arrayLike)
  *  利用 call()，这种方法比直接使用数组原生的 forEach 慢，所以还是用第一种方法更好
- *    Array.prototype.forEach.call(arrayLike, function (value, index) { console.log(value, index) } )
+ *    Array.prototype.forEach.call(arrayLike, function(value, index) { console.log(value, index) } )
  */
