@@ -29,3 +29,6 @@
 // import './error'
 // ES5 TODO [console, 控制台 API] --- ES6 ...
 // import './console'
+
+// ES5 TODO --- ES6 ...
+import './stdlib-object'
