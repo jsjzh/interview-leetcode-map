@@ -142,3 +142,124 @@ date.toLocaleString() // 2019/7/4 下午9:56:56
 var obj = { foo: 123 }
 obj.hasOwnProperty('foo') // true
 obj.hasOwnProperty('toString') // false 因为 toString 是继承来的
+
+/**
+ * 属性描述对象（attributes object）
+ *
+ * JavaScript 提供了一个内部数据结构用来描述对象的属性，控制他的行为，比如是否可写、可遍历、可配置
+ *
+ * value：默认 undefined
+ * writable：布尔值，默认 true，表示 value 是否可改变
+ * enumerable：布尔值，默认 true，表示 value 是否可遍历，如果为 false，for...in、Object.keys、JSON.stringify 会跳过该属性
+ * configurable：布尔值，默认 true，表示是否可以修改属性描述对象
+ *  如果为 false
+ *    writable 从 false -> true 报错，true -> 不报错
+ *    value 只要 writable 和 configurable 有一个为 true 就允许改动
+ *    delete 不能删除属性
+ * get：函数，默认 undefined，表示该属性的取值函数
+ * set：函数，默认 undefined，表示该属性的存值函数
+ *
+ * 需要注意的是，一旦定义了 get 或者 set，就不能将 wirtable 属性设置为 true，也不能定义 value 属性
+ */
+
+/**
+ * Object.getOwnPropertyDescriptor()
+ *
+ * 获取属性描述对象，只能用于对象自身的属性，不能查找继承的属性
+ * 第一个参数为目标对象，第二个参数为属性名
+ *
+ * var obj = { foo: 123 }
+ * Object.getOwnPropertyDescriptor(obj, "foo") // {value: 123, writable: true, enumerable: true, configurable: true}
+ */
+
+/**
+ * Object.defineProperty()、Object.defineProperties()
+ *
+ * 用来定义或修改一个或多个属性描述对象，返回修改后的对象
+ * 第一个参数为属性所在的对象，第二个参数为属性名，第三个为属性描述对象
+ */
+var obj = Object.defineProperty({}, 'foo', {
+  value: 123,
+  writable: false,
+  enumerable: false,
+  configurable: false
+})
+
+var obj = Object.defineProperties(
+  {},
+  {
+    foo: { value: 123, writable: false },
+    bar: { value: 321, writable: true }
+  }
+)
+
+/**
+ * Object.prototype.propertyEnumerable()
+ *
+ * 返回一个布尔值，用来判断某个属性是否可遍历，这个属性必须是自身的属性，如果是继承的属性一律返回 false
+ */
+
+/**
+ * 存取器
+ */
+
+var obj = Object.defineProperty({}, 'foo', {
+  get: function() {
+    return 123
+  },
+  set: function(val) {
+    console.log('setter: ' + val)
+  }
+})
+// 以下写法和上面的写法等价
+var ob = {
+  get foo() {
+    return 123
+  },
+  set foo(val) {
+    console.log('setter: ' + val)
+  }
+}
+
+/**
+ * 拷贝一个有存取器的对象
+ */
+var extend = function(to, from) {
+  for (var property in from) {
+    if (from.hasOwnProperty(property)) {
+      Object.defineProperty(to, property, Object.getOwnPropertyDescriptor(from, property))
+    }
+  }
+  return to
+}
+
+/**
+ * 控制对象状态
+ *
+ * 有时需要冻结对象的读写状态，防止对象被改变
+ * Object.preventExtensions()、Object.seal()、Object.freeze()
+ *
+ * 局限性
+ * 可以通过改变对象的原型对象来增加属性，并且如果对象的某一属性也是对象，就无法冻结该对象
+ * var obj = { arr: [1] }
+ * Object.freeze(obj)
+ * var proto = Object.getPrototypeOf(obj)
+ *
+ * proto.t = "123"
+ * obj.arr.push(2)
+ */
+
+/**
+ * Object.preventExtensions()：使一个对象无法添加新属性
+ * Object.isExtensible()：判断一个对象可不可以添加属性（就是判断 Object.preventExtensions()）
+ */
+
+/**
+ * Object.seal()：使一个对象无法添加新属性也无法删除旧属性，实质是把属性描述对象的 configurable 属性改为 false
+ * Object.isSealed()：检查一个对象是否使用了 Object.seal()
+ */
+
+/**
+ * Object.freeze()：使一个对象无法添加新属性、无法删除旧属性、无法改变属性的值，实质是把属性描述对象的 writable 和 configurable 属性改为 false
+ * Object.isFrozen()：检查一个对象是否使用了 Object.freeze() 方法
+ */
