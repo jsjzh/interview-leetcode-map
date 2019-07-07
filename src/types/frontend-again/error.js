@@ -5,7 +5,7 @@
  *
  * JavaScript 语言标准只提到 Error 实例对象必须有 message 属性，表示出错时的提示信息，但大多数 JavaScript 引擎对 Error 实例还提供 name 和 stack 属性，分别表示错误的名称和错误的堆栈
  *
- * 出现 Error 错误会导致后续的函数不再运行，但是需要注意的是并不是 Error 实例导致的，而是 throw 导致的
+ * 出现 Error 错误会导致后续的函数不再运行，但是值得注意的是并不是 Error 实例导致的，而是 throw 导致的
  * console.log(123)
  * throw new Error("error")
  * console.log(321) // 不会打印

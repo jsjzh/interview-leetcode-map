@@ -30,7 +30,7 @@
  *
  * 用来生成新对象，var obj = new Object() 和 var obj = {} 是等价的
  * 和 Object() 类似，若传入对象，则直接返回该对象，若传入原始值则返回该值对应的包装对象
- * 需要注意的是，虽然用法相似，但是语义不同
+ * 值得注意的是，虽然用法相似，但是语义不同
  * Object(value) 表示将 value 转成一个对象
  * new Object(value) 表示新生成一个对象，他的值是 value
  */
@@ -159,7 +159,7 @@ obj.hasOwnProperty('toString') // false 因为 toString 是继承来的
  * get：函数，默认 undefined，表示该属性的取值函数
  * set：函数，默认 undefined，表示该属性的存值函数
  *
- * 需要注意的是，一旦定义了 get 或者 set，就不能将 wirtable 属性设置为 true，也不能定义 value 属性
+ * 值得注意的是，一旦定义了 get 或者 set，就不能将 wirtable 属性设置为 true，也不能定义 value 属性
  */
 
 /**

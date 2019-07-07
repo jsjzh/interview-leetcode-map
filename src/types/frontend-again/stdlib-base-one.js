@@ -24,14 +24,14 @@
  * 实例方法
  *  Number.prototype.toString()
  *  该方法接受一个参数，表示想要转为的进制，默认为 10，输出字符串，该方法也可以对小数使用
- *  需要注意的是，该方法只能将十进制的数转为其他进制，如果要将其他进制转回十进制，要用 parseInt()
+ *  值得注意的是，该方法只能将十进制的数转为其他进制，如果要将其他进制转回十进制，要用 parseInt()
  *  (10).toString(2) // "1010"
  *  parseInt("1010", 2) // 10
  *  (10.5).toString(2) // "1010.1"
  *
  *  Number.prototype.toFixed()
  *  将一个数转为指定位数的小数，然后返回这个小数对应的字符串，有效范围为 0 到 20，超出会报错
- *  需要注意的是，由于浮点数的原因，小数 5 的四舍五入是不确定的
+ *  值得注意的是，由于浮点数的原因，小数 5 的四舍五入是不确定的
  *  (10.055).toFixed(2) // 10.05
  *  (10.005).toFixed(2) // 10.01
  *
@@ -50,7 +50,7 @@
  * 静态方法
  *  String.fromCharCode()
  *  该方法的参数是一个或多个数值，代表 unicode 码点，返回值是这些码点组成的字符串
- *  需要注意的是，该方法不指出 Unicode 码点大于 0xFFFF 的字符，即传入的参数不能大于 0xFFFF（即十进制的 65535），这个现象的原因在于码点大于 0xFFFF 的字符占四个字节，而 JavaScript 默认支持两个字节的字符，必要的话需要拆分码点
+ *  值得注意的是，该方法不指出 Unicode 码点大于 0xFFFF 的字符，即传入的参数不能大于 0xFFFF（即十进制的 65535），这个现象的原因在于码点大于 0xFFFF 的字符占四个字节，而 JavaScript 默认支持两个字节的字符，必要的话需要拆分码点
  *    0x20BB7 ===> 0xD842 0xDFB7
  *  String.fromCharCode(104, 101, 108, 108, 111) // "hello"
  *
@@ -63,7 +63,7 @@
  *
  *  String.prototype.charCodeAt()
  *  返回指定位置的字符的 unicode 码点（十进制表示），相当于 String.fromCharCode() 的逆操作
- *  需要注意的是，该方法返回的 Unicode 码点不会大于 65536（0xFFFF），如果遇到码点大于 65536 的字符，要使用两次 charCodeAt，不仅要读取 charCodeAt(i) 还要去读取 charCodeAt(i+1) 才能获取正确的值
+ *  值得注意的是，该方法返回的 Unicode 码点不会大于 65536（0xFFFF），如果遇到码点大于 65536 的字符，要使用两次 charCodeAt，不仅要读取 charCodeAt(i) 还要去读取 charCodeAt(i+1) 才能获取正确的值
  *  String.fromCharCode("𠮷".charCodeAt(0), "𠮷".charCodeAt(1)) // "𠮷"
  *
  *  String.prototype.concat()
@@ -88,7 +88,7 @@
  *
  *  String.prototype.trim()
  *  取出字符串两端的空格，返回新字符串，不改变原字符串
- *  需要注意的是，这不仅可以去除空格，还可以去除制表符（\t、]v）、换行符（\n）、回车符（\r）
+ *  值得注意的是，这不仅可以去除空格，还可以去除制表符（\t、]v）、换行符（\n）、回车符（\r）
  *
  *  String.prototype.toLowerCase()、String.kprototype.toUpperCase()
  *  这两个方法一个将一个字符串全部转为小写，一个将字符串全部转为大写

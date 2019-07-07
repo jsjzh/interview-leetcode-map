@@ -17,7 +17,7 @@
  * delete foo.b // true
  * var bar = Object.defineProperty({}, "a", { value: 123, configurable: false })
  * delete bar.a // false
- * 另外，有一点需要注意的是，delete 只能删除对象本身的属性，无法删除继承的属性
+ * 另外，有一点值得注意的是，delete 只能删除对象本身的属性，无法删除继承的属性
  *
  * in
  * 用于判断属性是否存在，in 的问题就是无法判断属性是否是对象自身的，这个时候可以使用对象的 hasOwnProperty 方法判断
