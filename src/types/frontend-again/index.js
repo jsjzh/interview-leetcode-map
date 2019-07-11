@@ -40,5 +40,8 @@
 // import './stdlib-base-two'
 // ES5 CLEAR --- ES6 ...
 // import './stdlib-base-three'
+// ES5 CLEAR --- ES6 ...
+// import './stdlib-base-four'
 // ES5 TODO --- ES6 ...
-import './stdlib-base-four'
+import './oop'
+
